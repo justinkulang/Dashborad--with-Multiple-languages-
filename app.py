@@ -1097,3 +1097,4 @@ if __name__ == '__main__':
     print("="*40)
     print(f"\n✅ Dashboard available at: http://{server_config['host']}:{server_config['port']}")
     app.run(host=server_config['host'], port=server_config['port'], debug=server_config['debug'])
+
