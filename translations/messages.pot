@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-18 20:24+0000\n"
+"POT-Creation-Date: 2025-06-19 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,609 +17,418 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:206
-msgid "Logged out successfully."
-msgstr ""
-
-#: app.py:289
-msgid "Print Vouchers"
-msgstr ""
-
-#: app.py:308
-msgid "Access Voucher"
-msgstr ""
-
-#: app.py:310 app.py:1064
-msgid "Username:"
-msgstr ""
-
-#: app.py:311 app.py:1065
-msgid "Password:"
-msgstr ""
-
-#: app.py:316
-msgid "QR Code for"
-msgstr ""
-
-#: app.py:320
-msgid "QR N/A"
-msgstr ""
-
-#: app.py:340 app.py:364
-msgid "No voucher data provided."
-msgstr ""
-
-#: app.py:347
-msgid "Invalid voucher data provided."
-msgstr ""
-
-#: app.py:356
-msgid "PDF generation library not available on the server."
-msgstr ""
-
-#: app.py:378
-msgid "Invalid voucher data provided for PDF export."
-msgstr ""
-
-#: app.py:384
-msgid ""
-"PDF generation failed on server due to missing dependencies. Please check"
-" server logs."
-msgstr ""
-
-#: app.py:385 app.py:1090
-#, python-format
-msgid "An unexpected error occurred during PDF generation: %s"
-msgstr ""
-
-#: app.py:445
-msgid ""
-"Connection failed: Could not establish API session. Check config and "
-"router status."
-msgstr ""
-
-#: app.py:452
-#, python-format
-msgid "Connected successfully to %(router_name)s"
-msgstr ""
-
-#: app.py:455
-#, python-format
-msgid "Connection failed: %s"
-msgstr ""
-
-#: app.py:458
-#, python-format
-msgid "Unexpected error during connection test: %s"
-msgstr ""
-
-#: app.py:481 app.py:495 app.py:512 app.py:545 app.py:573 app.py:586 app.py:598
-#: app.py:625
-msgid "Mikrotik connection not available"
-msgstr ""
-
-#: app.py:485
-msgid "User created successfully"
-msgstr ""
-
-#: app.py:488 app.py:505 app.py:522 app.py:550 app.py:579 app.py:591 app.py:603
-#, python-format
-msgid "Mikrotik Error: %s"
-msgstr ""
-
-#: app.py:498 app.py:515
-msgid "User not found"
-msgstr ""
-
-#: app.py:502
-msgid "User updated successfully"
-msgstr ""
-
-#: app.py:519
-msgid "User deleted successfully"
-msgstr ""
-
-#: app.py:547
-msgid "User disconnected successfully"
-msgstr ""
-
-#: app.py:576
-#, python-format
-msgid "Profile '%(profile_name)s' created successfully."
-msgstr ""
-
-#: app.py:588
-msgid "Profile updated successfully."
-msgstr ""
-
-#: app.py:600
-msgid "Profile deleted successfully."
-msgstr ""
-
-#: app.py:632
-msgid "Mikrotik connection not available (users fetch failed)"
-msgstr ""
-
-#: app.py:662
-#, python-format
-msgid "Successfully deleted %(count)s expired user(s)."
-msgstr ""
-
-#: app.py:664
-#, python-format
-msgid " Failed to delete: %(errors)s."
-msgstr ""
-
-#: app.py:669
-#, python-format
-msgid "An unexpected error occurred: %s"
-msgstr ""
-
-#: app.py:725 app.py:728 app.py:1027 app.py:1069 app.py:1182
-msgid "Unlimited"
-msgstr ""
-
-#: app.py:779
-msgid "Host, Port, and Username are required."
-msgstr ""
-
-#: app.py:784
-msgid "Invalid port number"
-msgstr ""
-
-#: app.py:786
-msgid "Invalid port number. Must be between 0 and 65535."
-msgstr ""
-
-#: app.py:813
-msgid "Successfully connected and configuration saved."
-msgstr ""
-
-#: app.py:820
-msgid "Authentication failed. Please check username and password."
-msgstr ""
-
-#: app.py:822
-msgid ""
-"Connection refused or timed out. Check IP address, port, and router "
-"firewall."
-msgstr ""
-
-#: app.py:823
-#, python-format
-msgid "Connection failed: %s."
-msgstr ""
-
-#: app.py:826
-#, python-format
-msgid "An unexpected error occurred: %s."
-msgstr ""
-
-#: app.py:848
-msgid "Configuration updated and saved."
-msgstr ""
-
-#: app.py:869
-msgid "Username and password are required."
-msgstr ""
-
-#: app.py:889
-msgid "Number of users and profile are required."
-msgstr ""
-
-#: app.py:891
-msgid "Number of users must be positive."
-msgstr ""
-
-#: app.py:938
-#, python-brace-format
-msgid "Created {} users. Failed: {}."
-msgstr ""
-
-#: app.py:982
-msgid "Profile name is required."
-msgstr ""
-
-#: app.py:990
-msgid "No data provided for update."
-msgstr ""
-
-#: app.py:1011
-msgid "No users found for the selected criteria."
-msgstr ""
-
-#: app.py:1020 login.html:138 mikrotik_userman_dashboard.html:215
-#: mikrotik_userman_dashboard.html:244 mikrotik_userman_dashboard.html:315
-#: mikrotik_userman_dashboard.html:341 mikrotik_userman_dashboard.html:398
-msgid "Username"
-msgstr ""
-
-#: app.py:1020 login.html:142 mikrotik_userman_dashboard.html:245
-#: mikrotik_userman_dashboard.html:399
-msgid "Password"
-msgstr ""
-
-#: app.py:1020 mikrotik_userman_dashboard.html:215
-#: mikrotik_userman_dashboard.html:246 mikrotik_userman_dashboard.html:259
-#: mikrotik_userman_dashboard.html:342 mikrotik_userman_dashboard.html:361
-#: mikrotik_userman_dashboard.html:422
-msgid "Profile"
-msgstr ""
-
-#: app.py:1020 mikrotik_userman_dashboard.html:215
-#: mikrotik_userman_dashboard.html:247 mikrotik_userman_dashboard.html:260
-#: mikrotik_userman_dashboard.html:423
-msgid "Time Limit"
-msgstr ""
-
-#: app.py:1021
-msgid "Total Data Limit"
-msgstr ""
-
-#: app.py:1021 mikrotik_userman_dashboard.html:216
-#: mikrotik_userman_dashboard.html:249 mikrotik_userman_dashboard.html:346
-#: mikrotik_userman_dashboard.html:425
-msgid "Comment"
-msgstr ""
-
-#: app.py:1021 app.py:1185 mikrotik_userman_dashboard.html:207
-#: mikrotik_userman_dashboard.html:427
-msgid "Disabled"
-msgstr ""
-
-#: app.py:1041
-msgid "Hotspot Vouchers"
-msgstr ""
-
-#: app.py:1062
-msgid "Hotspot Access"
-msgstr ""
-
-#: app.py:1068
-msgid "Profile:"
-msgstr ""
-
-#: app.py:1069
-msgid "Time Limit:"
-msgstr ""
-
-#: app.py:1070
-msgid "Data Limit:"
-msgstr ""
-
-#: app.py:1075
-msgid "QR Code"
-msgstr ""
-
-#: app.py:1084
-msgid ""
-"PDF generation is disabled. Please install system dependencies for "
-"WeasyPrint and restart the application."
-msgstr ""
-
-#: app.py:1095
-msgid "Invalid export format."
-msgstr ""
-
 #: app.py:1108
 #, python-format
 msgid "A server error occurred while fetching analytics: %s"
 msgstr ""
 
-#: app.py:1116
+#: app.py:1115
 msgid "Loading..."
 msgstr ""
 
-#: app.py:1117 login.html:203
+#: app.py:1116 login.html:203
 msgid "Successfully connected! Redirecting..."
 msgstr ""
 
-#: app.py:1118
+#: app.py:1117
 msgid "Connection failed. Please check details and try again."
 msgstr ""
 
-#: app.py:1119
+#: app.py:1118
 msgid "Network error or server is unreachable."
 msgstr ""
 
-#: app.py:1120
+#: app.py:1119
 msgid "Operation successful"
 msgstr ""
 
-#: app.py:1121
+#: app.py:1120
 msgid "Operation failed"
 msgstr ""
 
-#: app.py:1122
+#: app.py:1121
 msgid "Are you sure?"
 msgstr ""
 
-#: app.py:1123
+#: app.py:1122
 msgid "Saved"
 msgstr ""
 
-#: app.py:1124
+#: app.py:1123
 msgid "Deleted"
 msgstr ""
 
-#: app.py:1125
+#: app.py:1124
 msgid "Updated"
 msgstr ""
 
-#: app.py:1126
+#: app.py:1125
 msgid "Created"
 msgstr ""
 
-#: app.py:1127
+#: app.py:1126
 msgid "Connected"
 msgstr ""
 
-#: app.py:1128
+#: app.py:1127
 msgid "Disconnected"
 msgstr ""
 
-#: app.py:1129
+#: app.py:1128
 msgid "Connection test failed. Router might be unreachable."
 msgstr ""
 
-#: app.py:1130
+#: app.py:1129
 msgid "Configuration saved! Testing new connection..."
 msgstr ""
 
-#: app.py:1131
+#: app.py:1130
 msgid "User created successfully!"
 msgstr ""
 
-#: app.py:1132
+#: app.py:1131
 msgid "User updated successfully!"
 msgstr ""
 
-#: app.py:1133
+#: app.py:1132
 msgid "Profile updated successfully!"
 msgstr ""
 
-#: app.py:1134
+#: app.py:1133
 msgid "Profile created successfully!"
 msgstr ""
 
-#: app.py:1138
+#: app.py:1134
 msgid "No users match the criteria."
 msgstr ""
 
-#: app.py:1139
+#: app.py:1135
 msgid "No active sessions found."
 msgstr ""
 
-#: app.py:1140
+#: app.py:1136
 msgid "Could not load users."
 msgstr ""
 
-#: app.py:1141
+#: app.py:1137
 msgid "Could not load sessions."
 msgstr ""
 
-#: app.py:1142
+#: app.py:1138
 msgid "No profiles found."
 msgstr ""
 
-#: app.py:1143 mikrotik_userman_dashboard.html:220
+#: app.py:1139 mikrotik_userman_dashboard.html:224
 msgid "Loading users..."
 msgstr ""
 
-#: app.py:1144 mikrotik_userman_dashboard.html:320
+#: app.py:1140 mikrotik_userman_dashboard.html:324
 msgid "Loading sessions..."
 msgstr ""
 
-#: app.py:1145 mikrotik_userman_dashboard.html:380
+#: app.py:1141 mikrotik_userman_dashboard.html:384
 msgid "Loading profiles..."
 msgstr ""
 
-#: app.py:1146 mikrotik_userman_dashboard.html:350
-#: mikrotik_userman_dashboard.html:366
+#: app.py:1142 mikrotik_userman_dashboard.html:354
+#: mikrotik_userman_dashboard.html:370
 msgid "Loading analytics data..."
 msgstr ""
 
-#: app.py:1147
+#: app.py:1143
 msgid "Total Data Transferred: Loading..."
 msgstr ""
 
-#: app.py:1148
+#: app.py:1144
 msgid "Could not load top user data."
 msgstr ""
 
-#: app.py:1149
+#: app.py:1145
 msgid "Could not load profile usage data."
 msgstr ""
 
-#: app.py:1150
+#: app.py:1146
 msgid "No user data usage available."
 msgstr ""
 
-#: app.py:1151
+#: app.py:1147
 msgid "No profile usage data available."
 msgstr ""
 
-#: app.py:1152
+#: app.py:1148
 msgid "Total Data Transferred: Error loading data"
 msgstr ""
 
-#: app.py:1156 login.html:146
+#: app.py:1149 login.html:146
 msgid "Connect"
 msgstr ""
 
-#: app.py:1157 login.html:185 mikrotik_userman_dashboard.html:164
+#: app.py:1150 login.html:185 mikrotik_userman_dashboard.html:164
 msgid "Connecting..."
 msgstr ""
 
-#: app.py:1158 mikrotik_userman_dashboard.html:194
-#: mikrotik_userman_dashboard.html:309
+#: app.py:1151 mikrotik_userman_dashboard.html:194
+#: mikrotik_userman_dashboard.html:313
 msgid "Refresh"
 msgstr ""
 
-#: app.py:1159 mikrotik_userman_dashboard.html:403
+#: app.py:1152 mikrotik_userman_dashboard.html:434
 msgid "Test"
 msgstr ""
 
-#: app.py:1160
+#: app.py:1153
 msgid "Testing..."
 msgstr ""
 
-#: app.py:1161 mikrotik_userman_dashboard.html:404
+#: app.py:1154 mikrotik_userman_dashboard.html:435
 msgid "Save"
 msgstr ""
 
-#: app.py:1162
+#: app.py:1155
 msgid "Saving..."
 msgstr ""
 
-#: app.py:1163
+#: app.py:1156
 msgid "Delete"
 msgstr ""
 
-#: app.py:1164
+#: app.py:1157
 msgid "Deleting..."
 msgstr ""
 
-#: app.py:1165
+#: app.py:1158
 msgid "Disconnect"
 msgstr ""
 
-#: app.py:1166
+#: app.py:1159
 msgid "Disconnecting..."
 msgstr ""
 
-#: app.py:1167 mikrotik_userman_dashboard.html:376
+#: app.py:1160 mikrotik_userman_dashboard.html:380
 msgid "Add Profile"
 msgstr ""
 
-#: app.py:1168
+#: app.py:1161
 msgid "Edit Profile"
 msgstr ""
 
-#: app.py:1171
+#: app.py:1162
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: app.py:1172
+#: app.py:1163
 #, python-brace-format
 msgid "Are you sure you want to delete user \"{0}\"?"
 msgstr ""
 
-#: app.py:1173
+#: app.py:1164
 #, python-brace-format
 msgid "Are you sure you want to disconnect user \"{0}\"?"
 msgstr ""
 
-#: app.py:1174
+#: app.py:1165
 #, python-brace-format
 msgid "Are you sure you want to delete profile \"{0}\"? This cannot be undone."
 msgstr ""
 
-#: app.py:1175
+#: app.py:1166
 msgid ""
 "Are you sure you want to find and delete ALL expired users? This action "
 "is permanent."
 msgstr ""
 
-#: app.py:1178
+#: app.py:1167
 msgid "No generated voucher data available to view."
 msgstr ""
 
-#: app.py:1179
+#: app.py:1168
 msgid ""
 "Hotspot Login URL is not set in Settings (under the Settings Tab). QR "
 "Codes cannot be generated for viewing if this is missing."
 msgstr ""
 
-#: app.py:1180
+#: app.py:1169
 msgid "No generated voucher data available for PDF export."
 msgstr ""
 
-#: app.py:1181
+#: app.py:1170
 msgid ""
 "Hotspot Login URL is not set in Settings. QR Codes might be omitted in "
 "the PDF if this URL is required by the backend for them."
 msgstr ""
 
-#: app.py:1183
+#: app.py:1171
+msgid "Unlimited"
+msgstr ""
+
+#: app.py:1172
 msgid "All Profiles"
 msgstr ""
 
-#: app.py:1184
+#: app.py:1173
 msgid "Select Profile"
 msgstr ""
 
-#: app.py:1186 mikrotik_userman_dashboard.html:206
+#: app.py:1174 mikrotik_userman_dashboard.html:207
+#: mikrotik_userman_dashboard.html:458
+msgid "Disabled"
+msgstr ""
+
+#: app.py:1175 mikrotik_userman_dashboard.html:206
 msgid "Active"
 msgstr ""
 
-#: app.py:1187
+#: app.py:1176
 msgid "Logout failed unexpectedly. Please try again."
 msgstr ""
 
-#: app.py:1188
+#: app.py:1177
 #, python-brace-format
 msgid "Expected JSON response from server for {0}, but received {1}."
 msgstr ""
 
-#: app.py:1192
+#: app.py:1178
 #, python-brace-format
 msgid "Total Data Transferred: {0}"
 msgstr ""
 
-#: app.py:1196
+#: app.py:1179
 #, python-brace-format
 msgid "Edit User: {0}"
 msgstr ""
 
-#: app.py:1197
+#: app.py:1180
 #, python-brace-format
 msgid "Edit Profile: {0}"
 msgstr ""
 
-#: app.py:1198 mikrotik_userman_dashboard.html:444
+#: app.py:1181 mikrotik_userman_dashboard.html:475
 msgid "Add New Profile"
 msgstr ""
 
-#: app.py:1199
+#: app.py:1182
 #, python-brace-format
 msgid "Profile {0} created successfully!"
 msgstr ""
 
-#: app.py:1200
+#: app.py:1183
 #, python-brace-format
 msgid "Profile {0} updated successfully!"
 msgstr ""
 
-#: app.py:1201
+#: app.py:1184
 #, python-brace-format
 msgid "User \"{0}\" deleted."
 msgstr ""
 
-#: app.py:1202
+#: app.py:1185
 msgid "User disconnected."
 msgstr ""
 
-#: app.py:1203
+#: app.py:1186
 #, python-brace-format
 msgid "Profile \"{0}\" deleted."
 msgstr ""
 
-#: app.py:1204
+#: app.py:1187
 #, python-brace-format
 msgid "HTTP error! status: {0}"
 msgstr ""
 
-#: app.py:1205
+#: app.py:1188
 #, python-brace-format
 msgid "Connection failed (Error {0}). Please check details and try again."
 msgstr ""
 
-#: app.py:1212
+#: app.py:1191
+msgid "Advanced User Deletion"
+msgstr ""
+
+#: app.py:1192
+msgid "Delete All Users"
+msgstr ""
+
+#: app.py:1193
+msgid ""
+"Permanently remove ALL hotspot users from the router. This action cannot "
+"be undone."
+msgstr ""
+
+#: app.py:1194
+msgid "Delete Users by Profile"
+msgstr ""
+
+#: app.py:1195
+msgid "Select a profile to delete all users associated with it."
+msgstr ""
+
+#: app.py:1196
+msgid "Delete Users from Profile"
+msgstr ""
+
+#: app.py:1197
+msgid "Delete Users with Zero Uptime"
+msgstr ""
+
+#: app.py:1198
+msgid "Delete users who have never used the service (uptime is 0s)."
+msgstr ""
+
+#: app.py:1199
+msgid "Delete Zero Uptime Users"
+msgstr ""
+
+#: app.py:1202
+msgid "Please select at least one user."
+msgstr ""
+
+#: app.py:1203
+#, python-brace-format
+msgid "Are you sure you want to delete the selected {0} user(s)?"
+msgstr ""
+
+#: app.py:1204
+#, python-brace-format
+msgid "Users deleted: {0}. Errors: {1}."
+msgstr ""
+
+#: app.py:1205
+msgid ""
+"DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL "
+"to confirm:"
+msgstr ""
+
+#: app.py:1206
+msgid "Deletion cancelled or invalid confirmation input."
+msgstr ""
+
+#: app.py:1207
+msgid "Please select a profile first."
+msgstr ""
+
+#: app.py:1208
+#, python-brace-format
+msgid "Are you sure you want to delete all users from profile \"{0}\"?"
+msgstr ""
+
+#: app.py:1209
+msgid "Are you sure you want to delete all users with zero uptime (never used)?"
+msgstr ""
+
+#: app.py:1210
+msgid "Select Profile..."
+msgstr ""
+
+#: app.py:1211
+#, python-brace-format
+msgid "Delete Selected ({0})"
+msgstr ""
+
+#: app.py:1234
 msgid "  Mikrotik Hotspot Management System v2"
 msgstr ""
 
-#: app.py:1214
+#: app.py:1236
 msgid "Dashboard available at:"
 msgstr ""
 
@@ -631,7 +440,7 @@ msgstr ""
 msgid "Connect to Mikrotik Router"
 msgstr ""
 
-#: login.html:130 mikrotik_userman_dashboard.html:396
+#: login.html:130 mikrotik_userman_dashboard.html:427
 msgid "Router IP Address"
 msgstr ""
 
@@ -639,7 +448,7 @@ msgstr ""
 msgid "e.g., 192.168.88.1"
 msgstr ""
 
-#: login.html:134 mikrotik_userman_dashboard.html:397
+#: login.html:134 mikrotik_userman_dashboard.html:428
 msgid "API Port"
 msgstr ""
 
@@ -647,8 +456,19 @@ msgstr ""
 msgid "e.g., 8728"
 msgstr ""
 
+#: login.html:138 mikrotik_userman_dashboard.html:219
+#: mikrotik_userman_dashboard.html:248 mikrotik_userman_dashboard.html:319
+#: mikrotik_userman_dashboard.html:345 mikrotik_userman_dashboard.html:429
+msgid "Username"
+msgstr ""
+
 #: login.html:139
 msgid "e.g., admin"
+msgstr ""
+
+#: login.html:142 mikrotik_userman_dashboard.html:249
+#: mikrotik_userman_dashboard.html:430
+msgid "Password"
 msgstr ""
 
 #: login.html:143
@@ -698,7 +518,7 @@ msgid "Create"
 msgstr ""
 
 #: mikrotik_userman_dashboard.html:149 mikrotik_userman_dashboard.html:181
-#: mikrotik_userman_dashboard.html:308
+#: mikrotik_userman_dashboard.html:312
 msgid "Active Sessions"
 msgstr ""
 
@@ -754,297 +574,313 @@ msgstr ""
 msgid "Filter by Status..."
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:215
+#: mikrotik_userman_dashboard.html:219 mikrotik_userman_dashboard.html:250
+#: mikrotik_userman_dashboard.html:263 mikrotik_userman_dashboard.html:346
+#: mikrotik_userman_dashboard.html:365 mikrotik_userman_dashboard.html:453
+msgid "Profile"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:219
 msgid "Status"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:216
+#: mikrotik_userman_dashboard.html:219 mikrotik_userman_dashboard.html:251
+#: mikrotik_userman_dashboard.html:264 mikrotik_userman_dashboard.html:454
+msgid "Time Limit"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:220
 msgid "Data Limit"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:216 mikrotik_userman_dashboard.html:315
+#: mikrotik_userman_dashboard.html:220 mikrotik_userman_dashboard.html:319
 msgid "Uptime"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:216
+#: mikrotik_userman_dashboard.html:220
 msgid "Data Used"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:216 mikrotik_userman_dashboard.html:316
-#: mikrotik_userman_dashboard.html:379
+#: mikrotik_userman_dashboard.html:220 mikrotik_userman_dashboard.html:253
+#: mikrotik_userman_dashboard.html:350 mikrotik_userman_dashboard.html:456
+msgid "Comment"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:220 mikrotik_userman_dashboard.html:320
+#: mikrotik_userman_dashboard.html:383
 msgid "Actions"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:225
+#: mikrotik_userman_dashboard.html:229
 msgid "Export Users"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:229
+#: mikrotik_userman_dashboard.html:233
 msgid "Filter by Profile"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:232
+#: mikrotik_userman_dashboard.html:236
 msgid "CSV"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:233
+#: mikrotik_userman_dashboard.html:237
 msgid "Vouchers (HTML)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:234
+#: mikrotik_userman_dashboard.html:238
 msgid "Vouchers (PDF)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:241
+#: mikrotik_userman_dashboard.html:245
 msgid "Create Single User"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:247
+#: mikrotik_userman_dashboard.html:251
 msgid "e.g., 1h30m, 30d"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:248 mikrotik_userman_dashboard.html:424
+#: mikrotik_userman_dashboard.html:252 mikrotik_userman_dashboard.html:455
 msgid "Data Limit (MB)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:248
+#: mikrotik_userman_dashboard.html:252
 msgid "e.g., 500"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:251
+#: mikrotik_userman_dashboard.html:255
 msgid "Create User"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:255
+#: mikrotik_userman_dashboard.html:259
 msgid "Batch Voucher Generation"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:258
+#: mikrotik_userman_dashboard.html:262
 msgid "Number of Vouchers"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:260
+#: mikrotik_userman_dashboard.html:264
 msgid "e.g., 2h, 30d"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:261
+#: mikrotik_userman_dashboard.html:265
 msgid "Total Data Limit (MB)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:261
+#: mikrotik_userman_dashboard.html:265
 msgid "e.g., 1024"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:262
+#: mikrotik_userman_dashboard.html:266
 msgid "Batch Name / Comment Prefix"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:262
+#: mikrotik_userman_dashboard.html:266
 msgid "e.g., Event2024"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:263
+#: mikrotik_userman_dashboard.html:267
 msgid "Username Prefix (Optional)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:263
+#: mikrotik_userman_dashboard.html:267
 msgid "e.g., v-"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:264
+#: mikrotik_userman_dashboard.html:268
 msgid "Username Length (after prefix)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:265
+#: mikrotik_userman_dashboard.html:269
 msgid "Password Length"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:267
+#: mikrotik_userman_dashboard.html:271
 msgid "Username Characters"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:269 mikrotik_userman_dashboard.html:281
+#: mikrotik_userman_dashboard.html:273 mikrotik_userman_dashboard.html:285
 msgid "Alphanumeric (Upper & Lower)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:270 mikrotik_userman_dashboard.html:282
+#: mikrotik_userman_dashboard.html:274 mikrotik_userman_dashboard.html:286
 msgid "Alphanumeric (Upper Case Only)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:271 mikrotik_userman_dashboard.html:283
+#: mikrotik_userman_dashboard.html:275 mikrotik_userman_dashboard.html:287
 msgid "Alphanumeric (Lower Case Only)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:272 mikrotik_userman_dashboard.html:284
+#: mikrotik_userman_dashboard.html:276 mikrotik_userman_dashboard.html:288
 msgid "Numeric Only"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:273 mikrotik_userman_dashboard.html:285
+#: mikrotik_userman_dashboard.html:277 mikrotik_userman_dashboard.html:289
 msgid "Alphabetical (Upper Case Only)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:274 mikrotik_userman_dashboard.html:286
+#: mikrotik_userman_dashboard.html:278 mikrotik_userman_dashboard.html:290
 msgid "Alphabetical (Lower Case Only)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:278
+#: mikrotik_userman_dashboard.html:282
 msgid "Password Characters"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:280
+#: mikrotik_userman_dashboard.html:284
 msgid "Alphanumeric + Symbols"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:290
+#: mikrotik_userman_dashboard.html:294
 msgid "Generate Vouchers"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:293
+#: mikrotik_userman_dashboard.html:297
 msgid "Generated Credentials:"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:296
+#: mikrotik_userman_dashboard.html:300
 msgid "View Vouchers (HTML)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:299
+#: mikrotik_userman_dashboard.html:303
 msgid "Download Vouchers (PDF)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:315
+#: mikrotik_userman_dashboard.html:319
 msgid "IP Address"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:315
+#: mikrotik_userman_dashboard.html:319
 msgid "MAC Address"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:316
+#: mikrotik_userman_dashboard.html:320
 msgid "Data Usage"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:316
+#: mikrotik_userman_dashboard.html:320
 msgid "Time Left"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:329
+#: mikrotik_userman_dashboard.html:333
 msgid "Refresh Analytics"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:332
+#: mikrotik_userman_dashboard.html:336
 msgid "Total Data Transferred:"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:335
+#: mikrotik_userman_dashboard.html:339
 msgid "Top Users by Data Usage"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:343
+#: mikrotik_userman_dashboard.html:347
 msgid "Upload"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:344
+#: mikrotik_userman_dashboard.html:348
 msgid "Download"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:345
+#: mikrotik_userman_dashboard.html:349
 msgid "Total Data"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:356
+#: mikrotik_userman_dashboard.html:360
 msgid "Data Usage by Profile"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:362
+#: mikrotik_userman_dashboard.html:366
 msgid "Total Data Used"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:375
+#: mikrotik_userman_dashboard.html:379
 msgid "User Profiles"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:379 mikrotik_userman_dashboard.html:449
+#: mikrotik_userman_dashboard.html:383 mikrotik_userman_dashboard.html:480
 msgid "Name"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:379
+#: mikrotik_userman_dashboard.html:383
 msgid "Rate Limit"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:379 mikrotik_userman_dashboard.html:451
+#: mikrotik_userman_dashboard.html:383 mikrotik_userman_dashboard.html:482
 msgid "Session Timeout"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:379 mikrotik_userman_dashboard.html:452
+#: mikrotik_userman_dashboard.html:383 mikrotik_userman_dashboard.html:483
 msgid "Shared Users"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:385
+#: mikrotik_userman_dashboard.html:389
 msgid "Cleanup"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:386
+#: mikrotik_userman_dashboard.html:390
 msgid ""
 "Automatically find and delete users who have used up their time or data "
 "allowance."
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:387
+#: mikrotik_userman_dashboard.html:391
 msgid "Delete Expired Users"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:393
+#: mikrotik_userman_dashboard.html:424
 msgid "Router Connection"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:399
+#: mikrotik_userman_dashboard.html:430
 msgid "Enter new password to update"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:400
+#: mikrotik_userman_dashboard.html:431
 msgid "Hotspot Login URL (for QR Codes)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:400
+#: mikrotik_userman_dashboard.html:431
 msgid "e.g. http://my.hotspot/login"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:416
+#: mikrotik_userman_dashboard.html:447
 msgid "Edit User:"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:421
+#: mikrotik_userman_dashboard.html:452
 msgid "New Password"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:421
+#: mikrotik_userman_dashboard.html:452
 msgid "Leave blank to keep current"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:431 mikrotik_userman_dashboard.html:455
+#: mikrotik_userman_dashboard.html:462 mikrotik_userman_dashboard.html:486
 msgid "Cancel"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:432
+#: mikrotik_userman_dashboard.html:463
 msgid "Save Changes"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:450
+#: mikrotik_userman_dashboard.html:481
 msgid "Rate Limit (Upload/Download)"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:450
+#: mikrotik_userman_dashboard.html:481
 msgid "e.g., 512k/2M"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:451
+#: mikrotik_userman_dashboard.html:482
 msgid "e.g., 1d 00:00:00"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:452
+#: mikrotik_userman_dashboard.html:483
 msgid "e.g., 1"
 msgstr ""
 
-#: mikrotik_userman_dashboard.html:456
+#: mikrotik_userman_dashboard.html:487
 msgid "Save Profile"
 msgstr ""

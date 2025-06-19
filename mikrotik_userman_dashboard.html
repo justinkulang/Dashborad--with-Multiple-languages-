@@ -208,10 +208,14 @@
                         </select>
                     </div>
                 </div>
+                <div style="margin-bottom: 1rem;">
+                    <button class="btn btn-danger" id="deleteSelectedUsersButton" style="display:none;"><i class="fas fa-trash-alt"></i> <span data-translate="_js">Delete Selected Users</span></button>
+                </div>
                 <div class="table-container">
                     <table id="usersTable">
                         <thead>
                             <tr>
+                                <th><input type="checkbox" id="selectAllUsersCheckbox" title="Select all users"></th>
                                 <th>{{ _('Username') }}</th><th>{{ _('Profile') }}</th><th>{{ _('Status') }}</th><th>{{ _('Time Limit') }}</th>
                                 <th>{{ _('Data Limit') }}</th><th>{{ _('Uptime') }}</th><th>{{ _('Data Used') }}</th><th>{{ _('Comment') }}</th><th>{{ _('Actions') }}</th>
                             </tr>
@@ -385,6 +389,33 @@
                 <h3 class="panel-header">{{ _('Cleanup') }}</h3>
                 <p>{{ _('Automatically find and delete users who have used up their time or data allowance.') }}</p>
                 <button class="btn btn-danger" onclick="deleteExpiredUsers()"><i class="fas fa-trash-alt"></i> {{ _('Delete Expired Users') }}</button>
+            </div>
+            <div class="panel"> <!-- New Panel for Advanced Deletion -->
+                <h3 class="panel-header" data-translate="_js">Advanced User Deletion</h3>
+
+                <!-- Delete All Users -->
+                <div class="form-group" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                    <label style="font-weight: bold;" data-translate="_js">Delete All Users</label>
+                    <p><small data-translate="_js">Permanently remove ALL hotspot users from the router. This action cannot be undone.</small></p>
+                    <button class="btn btn-danger" id="deleteAllUsersButton"><i class="fas fa-skull-crossbones"></i> <span data-translate="_js">Delete All Users</span></button>
+                </div>
+                <hr style="display:none;"> <!-- HR is inside div, hide default hr if any -->
+
+                <!-- Delete by Profile -->
+                <div class="form-group" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                    <label style="font-weight: bold;" data-translate="_js">Delete Users by Profile</label>
+                    <p><small data-translate="_js">Select a profile to delete all users associated with it.</small></p>
+                    <select id="deleteByProfileSelect" class="form-group" style="margin-bottom:10px; width:auto; min-width:200px;"></select> <!-- Options populated by JS -->
+                    <button class="btn btn-danger" id="deleteByProfileButton" style="margin-top: 10px;"><i class="fas fa-user-times"></i> <span data-translate="_js">Delete Users from Profile</span></button>
+                </div>
+                <hr style="display:none;">
+
+                <!-- Delete Users with Zero Uptime -->
+                <div class="form-group">
+                    <label style="font-weight: bold;" data-translate="_js">Delete Users with Zero Uptime</label>
+                    <p><small data-translate="_js">Delete users who have never used the service (uptime is 0s).</small></p>
+                    <button class="btn btn-warning" id="deleteZeroUptimeButton"><i class="fas fa-user-clock"></i> <span data-translate="_js">Delete Zero Uptime Users</span></button>
+                </div>
             </div>
         </div>
 
@@ -650,6 +681,112 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (refreshAnalyticsBtn) {
         refreshAnalyticsBtn.addEventListener('click', loadAnalyticsData);
     }
+
+    // Event listener for deleteSelectedUsersButton
+    const deleteSelectedUsersBtn = document.getElementById('deleteSelectedUsersButton');
+    if (deleteSelectedUsersBtn) {
+        deleteSelectedUsersBtn.addEventListener('click', async () => {
+            const checkboxes = document.querySelectorAll('.user-select-checkbox:checked');
+            const usernamesToDelete = Array.from(checkboxes).map(cb => cb.dataset.username);
+
+            if (usernamesToDelete.length === 0) {
+                showAlert('globalAlert', 'warning', _js('Please select at least one user.'));
+                return;
+            }
+
+            if (confirm(_js('Are you sure you want to delete the selected {0} user(s)?', usernamesToDelete.length))) {
+                showGlobalSpinner(true);
+                let successCount = 0;
+                let errorCount = 0;
+                // Process deletions sequentially to avoid overwhelming the router/API, or use Promise.allSettled for parallel
+                for (const username of usernamesToDelete) {
+                    const result = await apiCall(`/users/${username}`, { method: 'DELETE' });
+                    if (result && result.success) {
+                        successCount++;
+                    } else {
+                        errorCount++;
+                        logger.error(`Failed to delete user ${username}: ${result ? result.message : 'Unknown error'}`);
+                    }
+                }
+                showGlobalSpinner(false);
+                showAlert('globalAlert', errorCount > 0 ? 'warning' : 'success', _js('Users deleted: {0}. Errors: {1}.', successCount, errorCount));
+
+                loadUsers(); // Refresh user list
+                loadDashboardStats(); // Refresh dashboard stats
+                const selectAllCheckbox = document.getElementById('selectAllUsersCheckbox');
+                if(selectAllCheckbox) selectAllCheckbox.checked = false;
+                updateDeleteSelectedButtonState(); // Hide button and update count
+            }
+        });
+    }
+
+    // Event listeners for new batch delete buttons
+    const deleteAllUsersBtn = document.getElementById('deleteAllUsersButton');
+    if (deleteAllUsersBtn) {
+        deleteAllUsersBtn.addEventListener('click', async () => {
+            const confirmInput = prompt(_js('DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:'));
+            if (confirmInput === "DELETE ALL") { // Exact match, not using _js for "DELETE ALL"
+                const result = await apiCall('/users/batch-delete', { method: 'POST', body: JSON.stringify({ method: 'all' }) });
+                if (result) {
+                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Display pre-translated message
+                    if (result.success) {
+                        loadUsers();
+                        loadDashboardStats();
+                    }
+                }
+            } else {
+                showAlert('globalAlert', 'info', _js('Deletion cancelled or invalid confirmation input.'));
+            }
+        });
+    }
+
+    const deleteByProfileBtn = document.getElementById('deleteByProfileButton');
+    if (deleteByProfileBtn) {
+        deleteByProfileBtn.addEventListener('click', async () => {
+            const selectedProfile = document.getElementById('deleteByProfileSelect').value;
+            if (!selectedProfile) {
+                showAlert('globalAlert', 'warning', _js('Please select a profile first.'));
+                return;
+            }
+            if (confirm(_js('Are you sure you want to delete all users from profile "{0}"?', selectedProfile))) {
+                const result = await apiCall('/users/batch-delete', { method: 'POST', body: JSON.stringify({ method: 'by_profile', profile: selectedProfile }) });
+                if (result) {
+                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Display pre-translated message
+                    if (result.success) {
+                        loadUsers();
+                        loadDashboardStats();
+                    }
+                }
+            }
+        });
+    }
+
+    const deleteZeroUptimeBtn = document.getElementById('deleteZeroUptimeButton');
+    if (deleteZeroUptimeBtn) {
+        deleteZeroUptimeBtn.addEventListener('click', async () => {
+            if (confirm(_js('Are you sure you want to delete all users with zero uptime (never used)?'))) {
+                const result = await apiCall('/users/batch-delete', { method: 'POST', body: JSON.stringify({ method: 'zero_uptime' }) });
+                if (result) {
+                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Display pre-translated message
+                    if (result.success) {
+                        loadUsers();
+                        loadDashboardStats();
+                    }
+                }
+            }
+        });
+    }
+
+    // Event listener for selectAllUsersCheckbox
+    const selectAllCheckbox = document.getElementById('selectAllUsersCheckbox');
+    if (selectAllCheckbox) {
+        selectAllCheckbox.addEventListener('change', function() {
+            document.querySelectorAll('.user-select-checkbox').forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            updateDeleteSelectedButtonState();
+        });
+    }
 });
 
 async function init() {
@@ -774,14 +911,26 @@ async function loadProfiles() {
     if (data && data.profiles) {
         currentProfiles = data.profiles;
         // Populate all profile dropdowns
-        const profileSelects = ['#profile', '#bulkProfile', '#editProfile', '#userFilterProfile', '#exportProfileFilter'];
+        const profileSelects = ['#profile', '#bulkProfile', '#editProfile', '#userFilterProfile', '#exportProfileFilter', '#deleteByProfileSelect']; // Added new select
         profileSelects.forEach(id => {
             const select = document.querySelector(id);
             if(select) {
-                const currentVal = select.value;
-                select.innerHTML = `<option value="">${id.includes('Filter') ? _js('All Profiles') : _js('Select Profile')}</option>`;
+                const currentVal = select.value; // Preserve current value if any
+                let defaultOptionText = _js('Select Profile'); // Default for most
+                if (id.includes('Filter')) {
+                    defaultOptionText = _js('All Profiles');
+                } else if (id === '#deleteByProfileSelect') {
+                    defaultOptionText = _js('Select Profile...');
+                }
+                select.innerHTML = `<option value="">${defaultOptionText}</option>`; // Set the default option
                 currentProfiles.forEach(p => select.add(new Option(p.name, p.name)));
-                if(currentVal) select.value = currentVal;
+
+                // Try to restore previous value if it's still valid
+                if(currentVal && Array.from(select.options).some(opt => opt.value === currentVal)) {
+                    select.value = currentVal;
+                } else {
+                    select.value = ""; // Reset to default if old value is no longer valid or for new select
+                }
             }
         });
         displayProfiles();
@@ -849,13 +998,19 @@ function filterAndDisplayUsers() {
     });
     
     const tbody = document.querySelector('#usersTable tbody');
+    const selectAllCheckbox = document.getElementById('selectAllUsersCheckbox'); // Get reference to the selectAll checkbox
+
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">${_js('No users match the criteria.')}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center;">${_js('No users match the criteria.')}</td></tr>`; // Colspan is 10
+        if(selectAllCheckbox) selectAllCheckbox.checked = false; // Uncheck if no users
+        // Call updateDeleteSelectedButtonState here after it's defined
+        if (typeof updateDeleteSelectedButtonState === "function") updateDeleteSelectedButtonState();
         return;
     }
 
     tbody.innerHTML = filtered.map(user => `
         <tr>
+            <td style="text-align:center;"><input type="checkbox" class="user-select-checkbox" data-username="${user.name}"></td>
             <td>${user.name}</td>
             <td>${user.profile || ''}</td>
             <td><span class="status-badge ${user.disabled === 'true' ? 'status-disabled' : 'status-active'}">${user.disabled === 'true' ? _js('Disabled') : _js('Active')}</span></td>
@@ -870,6 +1025,47 @@ function filterAndDisplayUsers() {
             </td>
         </tr>
     `).join('');
+
+    // Add event listeners to newly created checkboxes
+    document.querySelectorAll('.user-select-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const allCheckboxes = document.querySelectorAll('.user-select-checkbox');
+            const checkedCount = Array.from(allCheckboxes).filter(cb => cb.checked).length;
+            if(selectAllCheckbox) {
+                if (allCheckboxes.length > 0 && checkedCount === allCheckboxes.length) {
+                    selectAllCheckbox.checked = true;
+                    selectAllCheckbox.indeterminate = false;
+                } else if (checkedCount === 0) {
+                    selectAllCheckbox.checked = false;
+                    selectAllCheckbox.indeterminate = false;
+                } else {
+                    selectAllCheckbox.checked = false;
+                    selectAllCheckbox.indeterminate = true;
+                }
+            }
+            if (typeof updateDeleteSelectedButtonState === "function") updateDeleteSelectedButtonState();
+        });
+    });
+    if(selectAllCheckbox) {
+        selectAllCheckbox.checked = false;
+        selectAllCheckbox.indeterminate = false;
+    }
+    if (typeof updateDeleteSelectedButtonState === "function") updateDeleteSelectedButtonState();
+}
+
+function updateDeleteSelectedButtonState() {
+    const deleteSelectedBtn = document.getElementById('deleteSelectedUsersButton');
+    if (!deleteSelectedBtn) return;
+    const selectedCheckboxes = document.querySelectorAll('.user-select-checkbox:checked');
+    const count = selectedCheckboxes.length;
+
+    deleteSelectedBtn.style.display = count > 0 ? 'inline-flex' : 'none';
+    const spanInsideButton = deleteSelectedBtn.querySelector('span');
+    if (spanInsideButton) {
+         spanInsideButton.textContent = _js('Delete Selected ({0})', count);
+    } else {
+         deleteSelectedBtn.textContent = _js('Delete Selected ({0})', count);
+    }
 }
 
 function displayProfiles() {

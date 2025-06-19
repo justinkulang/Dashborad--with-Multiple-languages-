@@ -2,7 +2,7 @@
 Major overhaul with a redesigned UI, profile management, filtered exports, QR codes, and more."""
 from flask import Flask, render_template, request, jsonify, send_from_directory, g, redirect, url_for
 from flask_cors import CORS
-from flask_babel import Babel, get_locale, _ # Re-add get_locale
+from flask_babel import Babel, _
 import librouteros
 from librouteros.exceptions import TrapError
 import socket
@@ -65,7 +65,7 @@ app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 babel.init_app(app) # Initialize Babel with app context here
 
-# @babel.localeselector
+# @babel.localeselector  # Commented out as per subtask instruction
 # def get_locale_func():
 #     # Try to get the language from the user's browser settings
 #     # Ensure request context is available or handle appropriately if called outside request
@@ -214,7 +214,7 @@ def logout():
                 logger.error(f"Error closing connection from 'g' during logout: {e}")
 
     logger.info("User logged out, Mikrotik configuration reset to defaults.")
-    return jsonify({'success': True, 'message': _('Logged out successfully.')})
+    return jsonify({'success': True, 'message': 'Logged out successfully.'})
 
 def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include_print_button: bool = True) -> str:
     """
@@ -228,7 +228,7 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{_('Generated Vouchers')}</title>
+        <title>Generated Vouchers</title>
         <style>
             body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; background-color: #f4f4f9; display: flex; flex-direction: column; align-items: center; }
             .controls { margin-bottom: 20px; padding: 10px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -297,7 +297,7 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
     if include_print_button:
         html_parts.append("""
         <div class="controls">
-            <button onclick="window.print();">{_('Print Vouchers')}</button>
+            <button onclick="window.print();">Print Vouchers</button>
         </div>
         """)
     
@@ -316,20 +316,17 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
         html_parts.append(f"""
         <div class="voucher">
             <div class="voucher-details">
-                <div class="voucher-header"><h3>{_('Access Voucher')}</h3></div>
+                <div class="voucher-header"><h3>Access Voucher</h3></div>
                 <div class="credentials">
-                    <p><strong>{_('Username:')}</strong> <span>{username}</span></p>
-                    <p><strong>{_('Password:')}</strong> <span>{password}</span></p>
+                    <p><strong>Username:</strong> <span>{username}</span></p>
+                    <p><strong>Password:</strong> <span>{password}</span></p>
                 </div>
             </div>
         """)
         if qr_code_b64:
-            alt_trans = _('QR Code for')
-            alt_text = f"{alt_trans} {username}"
-            html_parts.append(f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" alt="{alt_text}"></div>')
+            html_parts.append(f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" alt="QR Code for {username}"></div>')
         else:
-            qr_na_trans = _("QR N/A")
-            html_parts.append(f'<div class="voucher-qr" style="font-size:0.8em; color:#aaa;"><span>{qr_na_trans}</span></div>')
+            html_parts.append('<div class="voucher-qr" style="font-size:0.8em; color:#aaa;"><span>QR N/A</span></div>')
         html_parts.append("</div>") # Close voucher div
 
     html_parts.append("""
@@ -1043,21 +1040,21 @@ def export_users_route():
         if not login_url:
             logger.warning("hotspot_login_url not set in config.json. QR Codes will not work.")
 
-        html_content = f"""
-        <html><head><title>{_('Hotspot Vouchers')}</title>
+        html_content = """
+        <html><head><title>Hotspot Vouchers</title>
         <style>
-            body {{{{ font-family: 'Segoe UI', sans-serif; margin: 10px; background-color: #f4f4f9; }}}}
-            .voucher-container {{{{ display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 10px; }}}}
-            .voucher {{{{ background: white; border: 1px solid #ddd; border-radius: 12px; padding: 15px; page-break-inside: avoid; display: flex; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }}}}
-            .voucher-details {{{{ flex-grow: 1; }}}}
-            .voucher-qr {{{{ flex-shrink: 0; width: 120px; height: 120px; margin-left: 15px; }}}}
-            .voucher-header {{{{ text-align: center; border-bottom: 2px dashed #6a11cb; margin-bottom: 10px; padding-bottom: 5px; }}}}
-            .voucher-header h3 {{{{ margin: 0; font-size: 1.2em; color: #2575fc; }}}}
-            .credentials p {{{{ font-size: 1.1em; margin: 8px 0; }}}}
-            .credentials strong {{{{ color: #333; }}}}
-            .credentials span {{{{ font-family: 'Courier New', monospace; background: #eee; padding: 3px 6px; border-radius: 4px; color: #d63384; font-weight: bold; }}}}
-            .voucher-info {{{{ font-size: 0.8em; color: #555; margin-top: 10px; border-top: 1px solid #eee; padding-top: 8px; }}}}
-            @media print {{{{ body {{{{ margin: 0; background: #fff; }}}} .voucher {{{{ box-shadow: none; border: 1px dashed #999; }}}} }}}}
+            body { font-family: 'Segoe UI', sans-serif; margin: 10px; background-color: #f4f4f9; }
+            .voucher-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 10px; }
+            .voucher { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 15px; page-break-inside: avoid; display: flex; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+            .voucher-details { flex-grow: 1; }
+            .voucher-qr { flex-shrink: 0; width: 120px; height: 120px; margin-left: 15px; }
+            .voucher-header { text-align: center; border-bottom: 2px dashed #6a11cb; margin-bottom: 10px; padding-bottom: 5px; }
+            .voucher-header h3 { margin: 0; font-size: 1.2em; color: #2575fc; }
+            .credentials p { font-size: 1.1em; margin: 8px 0; }
+            .credentials strong { color: #333; }
+            .credentials span { font-family: 'Courier New', monospace; background: #eee; padding: 3px 6px; border-radius: 4px; color: #d63384; font-weight: bold; }
+            .voucher-info { font-size: 0.8em; color: #555; margin-top: 10px; border-top: 1px solid #eee; padding-top: 8px; }
+            @media print { body { margin: 0; background: #fff; } .voucher { box-shadow: none; border: 1px dashed #999; } }
         </style></head><body><div class="voucher-container">
         """
         for user in users:
@@ -1065,39 +1062,37 @@ def export_users_route():
             html_content += f"""
             <div class="voucher">
                 <div class="voucher-details">
-                    <div class="voucher-header"><h3>{_('Hotspot Access')}</h3></div>
+                    <div class="voucher-header"><h3>Hotspot Access</h3></div>
                     <div class="credentials">
-                        <p><strong>{_('Username:')}</strong> <span>{user.get('name', 'N/A')}</span></p>
-                        <p><strong>{_('Password:')}</strong> <span>{user.get('password') or 'N/A'}</span></p>
+                        <p><strong>Username:</strong> <span>{user.get('name', 'N/A')}</span></p>
+                        <p><strong>Password:</strong> <span>{user.get('password') or 'N/A'}</span></p>
                     </div>
                     <div class="voucher-info">
-                        <strong>{_('Profile:')}</strong> {user.get('profile', 'N/A')} |
-                        <strong>{_('Time Limit:')}</strong> {user.get('limit-uptime') or _('Unlimited')} |
-                        <strong>{_('Data Limit:')}</strong> {format_bytes_for_export(user.get('limit-bytes-total'))}
+                        <strong>Profile:</strong> {user.get('profile', 'N/A')} |
+                        <strong>Time Limit:</strong> {user.get('limit-uptime') or 'Unlimited'} |
+                        <strong>Data Limit:</strong> {format_bytes_for_export(user.get('limit-bytes-total'))}
                     </div>
                 </div>
                 """
             if qr_code_b64:
-                alt_qr_trans = _("QR Code")
-                img_tag_html = '<img src="data:image/png;base64,' + qr_code_b64 + '" alt="' + alt_qr_trans + '">'
-                html_content += '<div class="voucher-qr">' + img_tag_html + '</div>'
+                html_content += f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" style="width:100%;height:100%;"></div>'
             html_content += "</div>"
         html_content += "</div></body></html>"
 
         if export_format == 'pdf_voucher':
             if not WEASYPRINT_AVAILABLE:
-                return jsonify({"success": False, "message": _("PDF generation is disabled. Please install system dependencies for WeasyPrint and restart the application.")}), 501
+                return jsonify({"success": False, "message": "PDF generation is disabled. Please install system dependencies for WeasyPrint and restart the application."}), 501
             try:
                 pdf_file = WeasyHTML(string=html_content).write_pdf()
                 return Response(pdf_file, mimetype="application/pdf", headers={"Content-disposition": f"attachment; filename=vouchers_{profile_filter or 'all'}.pdf"})
             except Exception as e:
                  logger.error(f"Failed to generate PDF: {e}")
-                 return jsonify({"success": False, "message": _("An unexpected error occurred during PDF generation: %s") % str(e)}), 500
+                 return jsonify({"success": False, "message": f"An unexpected error occurred during PDF generation: {e}"}), 500
         else: # html_voucher
             return Response(html_content, mimetype="text/html")
 
     else:
-        return jsonify({"success": False, "message": _("Invalid export format.")}), 400
+        return jsonify({"success": False, "message": "Invalid export format."}), 400
 
 @app.route('/api/analytics/basic_summary', methods=['GET'])
 def get_basic_analytics_summary_route():
@@ -1115,7 +1110,6 @@ def get_basic_analytics_summary_route():
 @app.route('/api/translations')
 def get_translations():
     # Define all keys that the JavaScript side will need.
-    # Using explicit keys allows for easier management and extraction for .po files.
     translations = {
         # Common alerts & messages
         'Loading...': _('Loading...'),
@@ -1191,7 +1185,46 @@ def get_translations():
         'User disconnected.': _('User disconnected.'),
         'Profile "{0}" deleted.': _('Profile "{0}" deleted.'),
         'HTTP error! status: {0}': _('HTTP error! status: {0}'),
-        'Connection failed (Error {0}). Please check details and try again.': _('Connection failed (Error {0}). Please check details and try again.')
+        'Connection failed (Error {0}). Please check details and try again.': _('Connection failed (Error {0}). Please check details and try again.'),
+
+        # Frontend specific strings for batch deletion UI and JS alerts/confirms
+        'Advanced User Deletion': _('Advanced User Deletion'),
+        'Delete All Users': _('Delete All Users'), # Used for label and button
+        'Permanently remove ALL hotspot users from the router. This action cannot be undone.': _('Permanently remove ALL hotspot users from the router. This action cannot be undone.'),
+        'Delete Users by Profile': _('Delete Users by Profile'),
+        'Select a profile to delete all users associated with it.': _('Select a profile to delete all users associated with it.'),
+        'Delete Users from Profile': _('Delete Users from Profile'),
+        'Delete Users with Zero Uptime': _('Delete Users with Zero Uptime'),
+        'Delete users who have never used the service (uptime is 0s).': _('Delete users who have never used the service (uptime is 0s).'),
+        'Delete Zero Uptime Users': _('Delete Zero Uptime Users'),
+        # 'Delete Selected Users' is initial text for a button, content changes, handled by 'Delete Selected ({0})'
+        # 'Select all users' is a static title attribute in HTML, not strictly needed for JS i18n here unless JS constructs it.
+        'Please select at least one user.': _('Please select at least one user.'),
+        'Are you sure you want to delete the selected {0} user(s)?': _('Are you sure you want to delete the selected {0} user(s)?'),
+        'Users deleted: {0}. Errors: {1}.': _('Users deleted: {0}. Errors: {1}.'), # For selected user deletion summary
+        'DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:': _('DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:'),
+        'Deletion cancelled or invalid confirmation input.': _('Deletion cancelled or invalid confirmation input.'),
+        'Please select a profile first.': _('Please select a profile first.'),
+        'Are you sure you want to delete all users from profile "{0}"?': _('Are you sure you want to delete all users from profile "{0}"?'),
+        'Are you sure you want to delete all users with zero uptime (never used)?': _('Are you sure you want to delete all users with zero uptime (never used)?'),
+        'Select Profile...': _('Select Profile...'), # Default for #deleteByProfileSelect
+        'Delete Selected ({0})': _('Delete Selected ({0})'), # For updating #deleteSelectedUsersButton text
+
+        # Note: Messages from backend batch delete operations (e.g., "All X users deleted successfully.")
+        # are already translated in their respective Python routes before being sent in the JSON response.
+        # The JavaScript should display result.message directly for these, not re-translate them with _js().
+        # The keys below were previously here but are for backend-translated messages, so they are not needed
+        # in the /api/translations dictionary which is for client-side string keys.
+        # 'Profile name is required for this deletion method.': _('Profile name is required for this deletion method.'),
+        # 'Invalid deletion method specified.': _('Invalid deletion method specified.'),
+        # 'Invalid request. Deletion method required.': _('Invalid request. Deletion method required.'),
+        # 'All %(count)s users deleted successfully.': _('All %(count)s users deleted successfully.'), # Python style
+        # 'No users found to delete.': _('No users found to delete.'),
+        # "No users found in profile '%(profile)s'.": _("No users found in profile '%(profile)s'."),
+        # "Successfully deleted %(count)s users from profile '%(profile)s'.": _("Successfully deleted %(count)s users from profile '%(profile)s'."),
+        # "No users found with zero uptime.": _("No users found with zero uptime."),
+        # "Successfully deleted %(count)s users with zero uptime.": _("Successfully deleted %(count)s users with zero uptime."),
+        # "An unspecified error occurred.": _("An unspecified error occurred.") # Generic, might be useful for JS if JS needs to show a generic error itself.
     }
     return jsonify(translations)
 
