@@ -1,7 +1,8 @@
 """Mikrotik Hotspot User Management Backend - v2
 Major overhaul with a redesigned UI, profile management, filtered exports, QR codes, and more."""
-from flask import Flask, render_template, request, jsonify, send_from_directory, g
+from flask import Flask, render_template, request, jsonify, send_from_directory, g, redirect, url_for
 from flask_cors import CORS
+from flask_babel import Babel, get_locale, _ # Re-add get_locale
 import librouteros
 from librouteros.exceptions import TrapError
 import socket
@@ -40,6 +41,9 @@ except (ImportError, OSError) as e:
 
 
 # Attempt to import qrcode for QR generation
+
+babel = Babel() # Define Babel instance here
+
 try:
     import qrcode
     from qrcode.image.styledpil import StyledPilImage
@@ -54,6 +58,20 @@ except ImportError:
 app = Flask(__name__)
 CORS(app)
 
+# Language configuration
+app.config['LANGUAGES'] = ['en', 'ar', 'fr']
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+
+babel.init_app(app) # Initialize Babel with app context here
+
+# @babel.localeselector
+# def get_locale_func():
+#     # Try to get the language from the user's browser settings
+#     # Ensure request context is available or handle appropriately if called outside request
+#     if request:
+#         return request.accept_languages.best_match(app.config['LANGUAGES'])
+#     return app.config['BABEL_DEFAULT_LOCALE'] # Fallback
 
 def get_base_path():
     """ Get base path for PyInstaller bundled app or normal script """
@@ -196,7 +214,7 @@ def logout():
                 logger.error(f"Error closing connection from 'g' during logout: {e}")
 
     logger.info("User logged out, Mikrotik configuration reset to defaults.")
-    return jsonify({'success': True, 'message': 'Logged out successfully.'})
+    return jsonify({'success': True, 'message': _('Logged out successfully.')})
 
 def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include_print_button: bool = True) -> str:
     """
@@ -210,7 +228,7 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Generated Vouchers</title>
+        <title>{_('Generated Vouchers')}</title>
         <style>
             body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; background-color: #f4f4f9; display: flex; flex-direction: column; align-items: center; }
             .controls { margin-bottom: 20px; padding: 10px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -279,7 +297,7 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
     if include_print_button:
         html_parts.append("""
         <div class="controls">
-            <button onclick="window.print();">Print Vouchers</button>
+            <button onclick="window.print();">{_('Print Vouchers')}</button>
         </div>
         """)
     
@@ -298,17 +316,20 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
         html_parts.append(f"""
         <div class="voucher">
             <div class="voucher-details">
-                <div class="voucher-header"><h3>Access Voucher</h3></div>
+                <div class="voucher-header"><h3>{_('Access Voucher')}</h3></div>
                 <div class="credentials">
-                    <p><strong>Username:</strong> <span>{username}</span></p>
-                    <p><strong>Password:</strong> <span>{password}</span></p>
+                    <p><strong>{_('Username:')}</strong> <span>{username}</span></p>
+                    <p><strong>{_('Password:')}</strong> <span>{password}</span></p>
                 </div>
             </div>
         """)
         if qr_code_b64:
-            html_parts.append(f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" alt="QR Code for {username}"></div>')
+            alt_trans = _('QR Code for')
+            alt_text = f"{alt_trans} {username}"
+            html_parts.append(f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" alt="{alt_text}"></div>')
         else:
-            html_parts.append('<div class="voucher-qr" style="font-size:0.8em; color:#aaa;"><span>QR N/A</span></div>')
+            qr_na_trans = _("QR N/A")
+            html_parts.append(f'<div class="voucher-qr" style="font-size:0.8em; color:#aaa;"><span>{qr_na_trans}</span></div>')
         html_parts.append("</div>") # Close voucher div
 
     html_parts.append("""
@@ -1022,21 +1043,21 @@ def export_users_route():
         if not login_url:
             logger.warning("hotspot_login_url not set in config.json. QR Codes will not work.")
 
-        html_content = """
-        <html><head><title>Hotspot Vouchers</title>
+        html_content = f"""
+        <html><head><title>{_('Hotspot Vouchers')}</title>
         <style>
-            body { font-family: 'Segoe UI', sans-serif; margin: 10px; background-color: #f4f4f9; }
-            .voucher-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 10px; }
-            .voucher { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 15px; page-break-inside: avoid; display: flex; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-            .voucher-details { flex-grow: 1; }
-            .voucher-qr { flex-shrink: 0; width: 120px; height: 120px; margin-left: 15px; }
-            .voucher-header { text-align: center; border-bottom: 2px dashed #6a11cb; margin-bottom: 10px; padding-bottom: 5px; }
-            .voucher-header h3 { margin: 0; font-size: 1.2em; color: #2575fc; }
-            .credentials p { font-size: 1.1em; margin: 8px 0; }
-            .credentials strong { color: #333; }
-            .credentials span { font-family: 'Courier New', monospace; background: #eee; padding: 3px 6px; border-radius: 4px; color: #d63384; font-weight: bold; }
-            .voucher-info { font-size: 0.8em; color: #555; margin-top: 10px; border-top: 1px solid #eee; padding-top: 8px; }
-            @media print { body { margin: 0; background: #fff; } .voucher { box-shadow: none; border: 1px dashed #999; } }
+            body {{{{ font-family: 'Segoe UI', sans-serif; margin: 10px; background-color: #f4f4f9; }}}}
+            .voucher-container {{{{ display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 10px; }}}}
+            .voucher {{{{ background: white; border: 1px solid #ddd; border-radius: 12px; padding: 15px; page-break-inside: avoid; display: flex; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }}}}
+            .voucher-details {{{{ flex-grow: 1; }}}}
+            .voucher-qr {{{{ flex-shrink: 0; width: 120px; height: 120px; margin-left: 15px; }}}}
+            .voucher-header {{{{ text-align: center; border-bottom: 2px dashed #6a11cb; margin-bottom: 10px; padding-bottom: 5px; }}}}
+            .voucher-header h3 {{{{ margin: 0; font-size: 1.2em; color: #2575fc; }}}}
+            .credentials p {{{{ font-size: 1.1em; margin: 8px 0; }}}}
+            .credentials strong {{{{ color: #333; }}}}
+            .credentials span {{{{ font-family: 'Courier New', monospace; background: #eee; padding: 3px 6px; border-radius: 4px; color: #d63384; font-weight: bold; }}}}
+            .voucher-info {{{{ font-size: 0.8em; color: #555; margin-top: 10px; border-top: 1px solid #eee; padding-top: 8px; }}}}
+            @media print {{{{ body {{{{ margin: 0; background: #fff; }}}} .voucher {{{{ box-shadow: none; border: 1px dashed #999; }}}} }}}}
         </style></head><body><div class="voucher-container">
         """
         for user in users:
@@ -1044,37 +1065,39 @@ def export_users_route():
             html_content += f"""
             <div class="voucher">
                 <div class="voucher-details">
-                    <div class="voucher-header"><h3>Hotspot Access</h3></div>
+                    <div class="voucher-header"><h3>{_('Hotspot Access')}</h3></div>
                     <div class="credentials">
-                        <p><strong>Username:</strong> <span>{user.get('name', 'N/A')}</span></p>
-                        <p><strong>Password:</strong> <span>{user.get('password') or 'N/A'}</span></p>
+                        <p><strong>{_('Username:')}</strong> <span>{user.get('name', 'N/A')}</span></p>
+                        <p><strong>{_('Password:')}</strong> <span>{user.get('password') or 'N/A'}</span></p>
                     </div>
                     <div class="voucher-info">
-                        <strong>Profile:</strong> {user.get('profile', 'N/A')} | 
-                        <strong>Time Limit:</strong> {user.get('limit-uptime') or 'Unlimited'} | 
-                        <strong>Data Limit:</strong> {format_bytes_for_export(user.get('limit-bytes-total'))}
+                        <strong>{_('Profile:')}</strong> {user.get('profile', 'N/A')} |
+                        <strong>{_('Time Limit:')}</strong> {user.get('limit-uptime') or _('Unlimited')} |
+                        <strong>{_('Data Limit:')}</strong> {format_bytes_for_export(user.get('limit-bytes-total'))}
                     </div>
                 </div>
                 """
             if qr_code_b64:
-                html_content += f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" style="width:100%;height:100%;"></div>'
+                alt_qr_trans = _("QR Code")
+                img_tag_html = '<img src="data:image/png;base64,' + qr_code_b64 + '" alt="' + alt_qr_trans + '">'
+                html_content += '<div class="voucher-qr">' + img_tag_html + '</div>'
             html_content += "</div>"
         html_content += "</div></body></html>"
 
         if export_format == 'pdf_voucher':
             if not WEASYPRINT_AVAILABLE:
-                return jsonify({"success": False, "message": "PDF generation is disabled. Please install system dependencies for WeasyPrint and restart the application."}), 501
+                return jsonify({"success": False, "message": _("PDF generation is disabled. Please install system dependencies for WeasyPrint and restart the application.")}), 501
             try:
                 pdf_file = WeasyHTML(string=html_content).write_pdf()
                 return Response(pdf_file, mimetype="application/pdf", headers={"Content-disposition": f"attachment; filename=vouchers_{profile_filter or 'all'}.pdf"})
             except Exception as e:
                  logger.error(f"Failed to generate PDF: {e}")
-                 return jsonify({"success": False, "message": f"An unexpected error occurred during PDF generation: {e}"}), 500
+                 return jsonify({"success": False, "message": _("An unexpected error occurred during PDF generation: %s") % str(e)}), 500
         else: # html_voucher
             return Response(html_content, mimetype="text/html")
 
     else:
-        return jsonify({"success": False, "message": "Invalid export format."}), 400
+        return jsonify({"success": False, "message": _("Invalid export format.")}), 400
 
 @app.route('/api/analytics/basic_summary', methods=['GET'])
 def get_basic_analytics_summary_route():
@@ -1087,13 +1110,95 @@ def get_basic_analytics_summary_route():
         
     except Exception as e:
         logger.error(f"API: Error fetching basic analytics: {str(e)}")
-        return jsonify({'success': False, 'message': f'A server error occurred while fetching analytics: {str(e)}'}), 500
+        return jsonify({'success': False, 'message': _('A server error occurred while fetching analytics: %s') % str(e)}), 500
 
+@app.route('/api/translations')
+def get_translations():
+    # Define all keys that the JavaScript side will need.
+    # Using explicit keys allows for easier management and extraction for .po files.
+    translations = {
+        # Common alerts & messages
+        'Loading...': _('Loading...'),
+        'Successfully connected! Redirecting...': _('Successfully connected! Redirecting...'),
+        'Connection failed. Please check details and try again.': _('Connection failed. Please check details and try again.'),
+        'Network error or server is unreachable.': _('Network error or server is unreachable.'),
+        'Operation successful': _('Operation successful'),
+        'Operation failed': _('Operation failed'),
+        'Are you sure?': _('Are you sure?'),
+        'Saved': _('Saved'),
+        'Deleted': _('Deleted'),
+        'Updated': _('Updated'),
+        'Created': _('Created'),
+        'Connected': _('Connected'),
+        'Disconnected': _('Disconnected'),
+        'Connection test failed. Router might be unreachable.': _('Connection test failed. Router might be unreachable.'),
+        'Configuration saved! Testing new connection...': _('Configuration saved! Testing new connection...'),
+        'User created successfully!': _('User created successfully!'),
+        'User updated successfully!': _('User updated successfully!'),
+        'Profile updated successfully!': _('Profile updated successfully!'),
+        'Profile created successfully!': _('Profile created successfully!'),
+        'No users match the criteria.': _('No users match the criteria.'),
+        'No active sessions found.': _('No active sessions found.'),
+        'Could not load users.': _('Could not load users.'),
+        'Could not load sessions.': _('Could not load sessions.'),
+        'No profiles found.': _('No profiles found.'),
+        'Loading users...': _('Loading users...'),
+        'Loading sessions...': _('Loading sessions...'),
+        'Loading profiles...': _('Loading profiles...'),
+        'Loading analytics data...': _('Loading analytics data...'),
+        'Total Data Transferred: Loading...': _('Total Data Transferred: Loading...'),
+        'Could not load top user data.': _('Could not load top user data.'),
+        'Could not load profile usage data.': _('Could not load profile usage data.'),
+        'No user data usage available.': _('No user data usage available.'),
+        'No profile usage data available.': _('No profile usage data available.'),
+        'Total Data Transferred: Error loading data': _('Total Data Transferred: Error loading data'),
+        'Connect': _('Connect'),
+        'Connecting...': _('Connecting...'),
+        'Refresh': _('Refresh'),
+        'Test': _('Test'),
+        'Testing...': _('Testing...'),
+        'Save': _('Save'),
+        'Saving...': _('Saving...'),
+        'Delete': _('Delete'),
+        'Deleting...': _('Deleting...'),
+        'Disconnect': _('Disconnect'),
+        'Disconnecting...': _('Disconnecting...'),
+        'Add Profile': _('Add Profile'),
+        'Edit Profile': _('Edit Profile'),
+        'confirmLogout': _('Are you sure you want to logout?'),
+        'confirmDeleteUser': _('Are you sure you want to delete user "{0}"?'),
+        'confirmDisconnectUser': _('Are you sure you want to disconnect user "{0}"?'),
+        'confirmDeleteProfile': _('Are you sure you want to delete profile "{0}"? This cannot be undone.'),
+        'confirmDeleteExpiredUsers': _('Are you sure you want to find and delete ALL expired users? This action is permanent.'),
+        'No generated voucher data available to view.': _('No generated voucher data available to view.'),
+        'Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.': _('Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.'),
+        'No generated voucher data available for PDF export.': _('No generated voucher data available for PDF export.'),
+        'Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.': _('Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.'),
+        'Unlimited': _('Unlimited'),
+        'All Profiles': _('All Profiles'),
+        'Select Profile': _('Select Profile'),
+        'Disabled': _('Disabled'),
+        'Active': _('Active'),
+        'Logout failed unexpectedly. Please try again.': _('Logout failed unexpectedly. Please try again.'),
+        'Expected JSON response from server for {0}, but received {1}.': _('Expected JSON response from server for {0}, but received {1}.'),
+        'Total Data Transferred: {0}': _('Total Data Transferred: {0}'),
+        'Edit User: {0}': _('Edit User: {0}'),
+        'Edit Profile: {0}': _('Edit Profile: {0}'),
+        'Add New Profile': _('Add New Profile'),
+        'Profile {0} created successfully!': _('Profile {0} created successfully!'),
+        'Profile {0} updated successfully!': _('Profile {0} updated successfully!'),
+        'User "{0}" deleted.': _('User "{0}" deleted.'),
+        'User disconnected.': _('User disconnected.'),
+        'Profile "{0}" deleted.': _('Profile "{0}" deleted.'),
+        'HTTP error! status: {0}': _('HTTP error! status: {0}'),
+        'Connection failed (Error {0}). Please check details and try again.': _('Connection failed (Error {0}). Please check details and try again.')
+    }
+    return jsonify(translations)
 
 if __name__ == '__main__':
     server_config = app_config['server']
     print("="*40)
-    print("  Mikrotik Hotspot Management System v2")
+    print(_("  Mikrotik Hotspot Management System v2"))
     print("="*40)
-    print(f"\n✅ Dashboard available at: http://{server_config['host']}:{server_config['port']}")
+    print(f"\n✅ {_('Dashboard available at:')} http://{server_config['host']}:{server_config['port']}")
     app.run(host=server_config['host'], port=server_config['port'], debug=server_config['debug'])

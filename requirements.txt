@@ -3,3 +3,4 @@ Flask-CORS==4.0.0
 librouteros==3.2.0
 weasyprint
 qrcode[pil]
+Flask-Babel

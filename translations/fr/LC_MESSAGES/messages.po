@@ -1,0 +1,1051 @@
+# French translations for Hotspot Manager v2.
+# Copyright (C) 2024 The IT Dad
+# This file is distributed under the same license as the Hotspot Manager v2 project.
+# The IT Dad <justinkulang@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Hotspot Manager v2 1.0\n"
+"Report-Msgid-Bugs-To: justinkulang@gmail.com\n"
+"POT-Creation-Date: 2025-06-18 20:24+0000\n"
+"PO-Revision-Date: 2024-07-15 10:00+0000\n"
+"Last-Translator: The IT Dad <justinkulang@gmail.com>\n"
+"Language: fr\n"
+"Language-Team: French <fr@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app.py:206
+msgid "Logged out successfully."
+msgstr ""
+
+#: app.py:289
+msgid "Print Vouchers"
+msgstr ""
+
+#: app.py:308
+msgid "Access Voucher"
+msgstr ""
+
+#: app.py:310 app.py:1064
+msgid "Username:"
+msgstr ""
+
+#: app.py:311 app.py:1065
+msgid "Password:"
+msgstr ""
+
+#: app.py:316
+msgid "QR Code for"
+msgstr ""
+
+#: app.py:320
+msgid "QR N/A"
+msgstr ""
+
+#: app.py:340 app.py:364
+msgid "No voucher data provided."
+msgstr ""
+
+#: app.py:347
+msgid "Invalid voucher data provided."
+msgstr ""
+
+#: app.py:356
+msgid "PDF generation library not available on the server."
+msgstr ""
+
+#: app.py:378
+msgid "Invalid voucher data provided for PDF export."
+msgstr ""
+
+#: app.py:384
+msgid ""
+"PDF generation failed on server due to missing dependencies. Please check"
+" server logs."
+msgstr ""
+
+#: app.py:385 app.py:1090
+#, python-format
+msgid "An unexpected error occurred during PDF generation: %s"
+msgstr ""
+
+#: app.py:445
+msgid ""
+"Connection failed: Could not establish API session. Check config and "
+"router status."
+msgstr ""
+
+#: app.py:452
+#, python-format
+msgid "Connected successfully to %(router_name)s"
+msgstr ""
+
+#: app.py:455
+#, python-format
+msgid "Connection failed: %s"
+msgstr ""
+
+#: app.py:458
+#, python-format
+msgid "Unexpected error during connection test: %s"
+msgstr ""
+
+#: app.py:481 app.py:495 app.py:512 app.py:545 app.py:573 app.py:586 app.py:598
+#: app.py:625
+msgid "Mikrotik connection not available"
+msgstr ""
+
+#: app.py:485
+msgid "User created successfully"
+msgstr "Utilisateur créé avec succès"
+
+#: app.py:488 app.py:505 app.py:522 app.py:550 app.py:579 app.py:591 app.py:603
+#, python-format
+msgid "Mikrotik Error: %s"
+msgstr ""
+
+#: app.py:498 app.py:515
+msgid "User not found"
+msgstr ""
+
+#: app.py:502
+msgid "User updated successfully"
+msgstr ""
+
+#: app.py:519
+msgid "User deleted successfully"
+msgstr ""
+
+#: app.py:547
+msgid "User disconnected successfully"
+msgstr ""
+
+#: app.py:576
+#, python-format
+msgid "Profile '%(profile_name)s' created successfully."
+msgstr ""
+
+#: app.py:588
+msgid "Profile updated successfully."
+msgstr ""
+
+#: app.py:600
+msgid "Profile deleted successfully."
+msgstr ""
+
+#: app.py:632
+msgid "Mikrotik connection not available (users fetch failed)"
+msgstr ""
+
+#: app.py:662
+#, python-format
+msgid "Successfully deleted %(count)s expired user(s)."
+msgstr ""
+
+#: app.py:664
+#, python-format
+msgid " Failed to delete: %(errors)s."
+msgstr ""
+
+#: app.py:669
+#, python-format
+msgid "An unexpected error occurred: %s"
+msgstr ""
+
+#: app.py:725 app.py:728 app.py:1027 app.py:1069 app.py:1182
+msgid "Unlimited"
+msgstr "Illimité"
+
+#: app.py:779
+msgid "Host, Port, and Username are required."
+msgstr ""
+
+#: app.py:784
+msgid "Invalid port number"
+msgstr ""
+
+#: app.py:786
+msgid "Invalid port number. Must be between 0 and 65535."
+msgstr ""
+
+#: app.py:813
+msgid "Successfully connected and configuration saved."
+msgstr ""
+
+#: app.py:820
+msgid "Authentication failed. Please check username and password."
+msgstr ""
+
+#: app.py:822
+msgid ""
+"Connection refused or timed out. Check IP address, port, and router "
+"firewall."
+msgstr ""
+
+#: app.py:823
+#, python-format
+msgid "Connection failed: %s."
+msgstr ""
+
+#: app.py:826
+#, python-format
+msgid "An unexpected error occurred: %s."
+msgstr ""
+
+#: app.py:848
+msgid "Configuration updated and saved."
+msgstr ""
+
+#: app.py:869
+msgid "Username and password are required."
+msgstr ""
+
+#: app.py:889
+msgid "Number of users and profile are required."
+msgstr ""
+
+#: app.py:891
+msgid "Number of users must be positive."
+msgstr ""
+
+#: app.py:938
+#, python-brace-format
+msgid "Created {} users. Failed: {}."
+msgstr ""
+
+#: app.py:982
+msgid "Profile name is required."
+msgstr ""
+
+#: app.py:990
+msgid "No data provided for update."
+msgstr ""
+
+#: app.py:1011
+msgid "No users found for the selected criteria."
+msgstr ""
+
+#: app.py:1020 login.html:138 mikrotik_userman_dashboard.html:215
+#: mikrotik_userman_dashboard.html:244 mikrotik_userman_dashboard.html:315
+#: mikrotik_userman_dashboard.html:341 mikrotik_userman_dashboard.html:398
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: app.py:1020 login.html:142 mikrotik_userman_dashboard.html:245
+#: mikrotik_userman_dashboard.html:399
+msgid "Password"
+msgstr "Mot de passe"
+
+#: app.py:1020 mikrotik_userman_dashboard.html:215
+#: mikrotik_userman_dashboard.html:246 mikrotik_userman_dashboard.html:259
+#: mikrotik_userman_dashboard.html:342 mikrotik_userman_dashboard.html:361
+#: mikrotik_userman_dashboard.html:422
+msgid "Profile"
+msgstr ""
+
+#: app.py:1020 mikrotik_userman_dashboard.html:215
+#: mikrotik_userman_dashboard.html:247 mikrotik_userman_dashboard.html:260
+#: mikrotik_userman_dashboard.html:423
+msgid "Time Limit"
+msgstr ""
+
+#: app.py:1021
+msgid "Total Data Limit"
+msgstr ""
+
+#: app.py:1021 mikrotik_userman_dashboard.html:216
+#: mikrotik_userman_dashboard.html:249 mikrotik_userman_dashboard.html:346
+#: mikrotik_userman_dashboard.html:425
+msgid "Comment"
+msgstr ""
+
+#: app.py:1021 app.py:1185 mikrotik_userman_dashboard.html:207
+#: mikrotik_userman_dashboard.html:427
+msgid "Disabled"
+msgstr ""
+
+#: app.py:1041
+msgid "Hotspot Vouchers"
+msgstr ""
+
+#: app.py:1062
+msgid "Hotspot Access"
+msgstr ""
+
+#: app.py:1068
+msgid "Profile:"
+msgstr ""
+
+#: app.py:1069
+msgid "Time Limit:"
+msgstr ""
+
+#: app.py:1070
+msgid "Data Limit:"
+msgstr ""
+
+#: app.py:1075
+msgid "QR Code"
+msgstr ""
+
+#: app.py:1084
+msgid ""
+"PDF generation is disabled. Please install system dependencies for "
+"WeasyPrint and restart the application."
+msgstr ""
+
+#: app.py:1095
+msgid "Invalid export format."
+msgstr ""
+
+#: app.py:1108
+#, python-format
+msgid "A server error occurred while fetching analytics: %s"
+msgstr ""
+
+#: app.py:1116
+msgid "Loading..."
+msgstr ""
+
+#: app.py:1117 login.html:203
+msgid "Successfully connected! Redirecting..."
+msgstr ""
+
+#: app.py:1118
+msgid "Connection failed. Please check details and try again."
+msgstr ""
+
+#: app.py:1119
+msgid "Network error or server is unreachable."
+msgstr "Erreur réseau ou serveur inaccessible."
+
+#: app.py:1120
+msgid "Operation successful"
+msgstr ""
+
+#: app.py:1121
+msgid "Operation failed"
+msgstr ""
+
+#: app.py:1122
+msgid "Are you sure?"
+msgstr ""
+
+#: app.py:1123
+msgid "Saved"
+msgstr ""
+
+#: app.py:1124
+msgid "Deleted"
+msgstr ""
+
+#: app.py:1125
+msgid "Updated"
+msgstr ""
+
+#: app.py:1126
+msgid "Created"
+msgstr ""
+
+#: app.py:1127
+msgid "Connected"
+msgstr ""
+
+#: app.py:1128
+msgid "Disconnected"
+msgstr ""
+
+#: app.py:1129
+msgid "Connection test failed. Router might be unreachable."
+msgstr ""
+
+#: app.py:1130
+msgid "Configuration saved! Testing new connection..."
+msgstr ""
+
+#: app.py:1131
+msgid "User created successfully!"
+msgstr ""
+
+#: app.py:1132
+msgid "User updated successfully!"
+msgstr ""
+
+#: app.py:1133
+msgid "Profile updated successfully!"
+msgstr ""
+
+#: app.py:1134
+msgid "Profile created successfully!"
+msgstr ""
+
+#: app.py:1138
+msgid "No users match the criteria."
+msgstr ""
+
+#: app.py:1139
+msgid "No active sessions found."
+msgstr ""
+
+#: app.py:1140
+msgid "Could not load users."
+msgstr ""
+
+#: app.py:1141
+msgid "Could not load sessions."
+msgstr ""
+
+#: app.py:1142
+msgid "No profiles found."
+msgstr ""
+
+#: app.py:1143 mikrotik_userman_dashboard.html:220
+msgid "Loading users..."
+msgstr ""
+
+#: app.py:1144 mikrotik_userman_dashboard.html:320
+msgid "Loading sessions..."
+msgstr ""
+
+#: app.py:1145 mikrotik_userman_dashboard.html:380
+msgid "Loading profiles..."
+msgstr ""
+
+#: app.py:1146 mikrotik_userman_dashboard.html:350
+#: mikrotik_userman_dashboard.html:366
+msgid "Loading analytics data..."
+msgstr ""
+
+#: app.py:1147
+msgid "Total Data Transferred: Loading..."
+msgstr ""
+
+#: app.py:1148
+msgid "Could not load top user data."
+msgstr ""
+
+#: app.py:1149
+msgid "Could not load profile usage data."
+msgstr ""
+
+#: app.py:1150
+msgid "No user data usage available."
+msgstr ""
+
+#: app.py:1151
+msgid "No profile usage data available."
+msgstr ""
+
+#: app.py:1152
+msgid "Total Data Transferred: Error loading data"
+msgstr ""
+
+#: app.py:1156 login.html:146
+msgid "Connect"
+msgstr "Connexion"
+
+#: app.py:1157 login.html:185 mikrotik_userman_dashboard.html:164
+msgid "Connecting..."
+msgstr ""
+
+#: app.py:1158 mikrotik_userman_dashboard.html:194
+#: mikrotik_userman_dashboard.html:309
+msgid "Refresh"
+msgstr ""
+
+#: app.py:1159 mikrotik_userman_dashboard.html:403
+msgid "Test"
+msgstr ""
+
+#: app.py:1160
+msgid "Testing..."
+msgstr ""
+
+#: app.py:1161 mikrotik_userman_dashboard.html:404
+msgid "Save"
+msgstr "Enregistrer"
+
+#: app.py:1162
+msgid "Saving..."
+msgstr ""
+
+#: app.py:1163
+msgid "Delete"
+msgstr ""
+
+#: app.py:1164
+msgid "Deleting..."
+msgstr ""
+
+#: app.py:1165
+msgid "Disconnect"
+msgstr ""
+
+#: app.py:1166
+msgid "Disconnecting..."
+msgstr ""
+
+#: app.py:1167 mikrotik_userman_dashboard.html:376
+msgid "Add Profile"
+msgstr ""
+
+#: app.py:1168
+msgid "Edit Profile"
+msgstr ""
+
+#: app.py:1171
+msgid "Are you sure you want to logout?"
+msgstr ""
+
+#: app.py:1172
+#, python-brace-format
+msgid "Are you sure you want to delete user \"{0}\"?"
+msgstr ""
+
+#: app.py:1173
+#, python-brace-format
+msgid "Are you sure you want to disconnect user \"{0}\"?"
+msgstr ""
+
+#: app.py:1174
+#, python-brace-format
+msgid "Are you sure you want to delete profile \"{0}\"? This cannot be undone."
+msgstr ""
+
+#: app.py:1175
+msgid ""
+"Are you sure you want to find and delete ALL expired users? This action "
+"is permanent."
+msgstr ""
+
+#: app.py:1178
+msgid "No generated voucher data available to view."
+msgstr ""
+
+#: app.py:1179
+msgid ""
+"Hotspot Login URL is not set in Settings (under the Settings Tab). QR "
+"Codes cannot be generated for viewing if this is missing."
+msgstr ""
+
+#: app.py:1180
+msgid "No generated voucher data available for PDF export."
+msgstr ""
+
+#: app.py:1181
+msgid ""
+"Hotspot Login URL is not set in Settings. QR Codes might be omitted in "
+"the PDF if this URL is required by the backend for them."
+msgstr ""
+
+#: app.py:1183
+msgid "All Profiles"
+msgstr ""
+
+#: app.py:1184
+msgid "Select Profile"
+msgstr ""
+
+#: app.py:1186 mikrotik_userman_dashboard.html:206
+msgid "Active"
+msgstr ""
+
+#: app.py:1187
+msgid "Logout failed unexpectedly. Please try again."
+msgstr ""
+
+#: app.py:1188
+#, python-brace-format
+msgid "Expected JSON response from server for {0}, but received {1}."
+msgstr ""
+
+#: app.py:1192
+#, python-brace-format
+msgid "Total Data Transferred: {0}"
+msgstr ""
+
+#: app.py:1196
+#, python-brace-format
+msgid "Edit User: {0}"
+msgstr ""
+
+#: app.py:1197
+#, python-brace-format
+msgid "Edit Profile: {0}"
+msgstr ""
+
+#: app.py:1198 mikrotik_userman_dashboard.html:444
+msgid "Add New Profile"
+msgstr ""
+
+#: app.py:1199
+#, python-brace-format
+msgid "Profile {0} created successfully!"
+msgstr ""
+
+#: app.py:1200
+#, python-brace-format
+msgid "Profile {0} updated successfully!"
+msgstr ""
+
+#: app.py:1201
+#, python-brace-format
+msgid "User \"{0}\" deleted."
+msgstr ""
+
+#: app.py:1202
+msgid "User disconnected."
+msgstr ""
+
+#: app.py:1203
+#, python-brace-format
+msgid "Profile \"{0}\" deleted."
+msgstr ""
+
+#: app.py:1204
+#, python-brace-format
+msgid "HTTP error! status: {0}"
+msgstr ""
+
+#: app.py:1205
+#, python-brace-format
+msgid "Connection failed (Error {0}). Please check details and try again."
+msgstr ""
+
+#: app.py:1212
+msgid "  Mikrotik Hotspot Management System v2"
+msgstr ""
+
+#: app.py:1214
+msgid "Dashboard available at:"
+msgstr ""
+
+#: login.html:6
+msgid "Connect to Mikrotik - Hotspot Manager"
+msgstr ""
+
+#: login.html:127
+msgid "Connect to Mikrotik Router"
+msgstr "Connectez-vous au routeur Mikrotik"
+
+#: login.html:130 mikrotik_userman_dashboard.html:396
+msgid "Router IP Address"
+msgstr "Adresse IP du routeur"
+
+#: login.html:131
+msgid "e.g., 192.168.88.1"
+msgstr ""
+
+#: login.html:134 mikrotik_userman_dashboard.html:397
+msgid "API Port"
+msgstr ""
+
+#: login.html:135
+msgid "e.g., 8728"
+msgstr ""
+
+#: login.html:139
+msgid "e.g., admin"
+msgstr ""
+
+#: login.html:143
+msgid "Enter password"
+msgstr ""
+
+#: login.html:171
+msgid "Router IP, Port, and Username are required."
+msgstr ""
+
+#: login.html:177
+msgid "Please enter a valid port number (1-65535)."
+msgstr ""
+
+#: login.html:210
+msgid "Connection failed (Error "
+msgstr ""
+
+#: login.html:210
+msgid "). Please check details and try again."
+msgstr ""
+
+#: login.html:218
+msgid ""
+"Network error or server is unreachable. Please check your network "
+"connection and try again."
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:6
+msgid "Hotspot Manager v2"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:143
+msgid "Hotspot Manager"
+msgstr "Gestionnaire de Hotspot"
+
+#: mikrotik_userman_dashboard.html:146 mikrotik_userman_dashboard.html:163
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: mikrotik_userman_dashboard.html:147
+msgid "Users"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:148
+msgid "Create"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:149 mikrotik_userman_dashboard.html:181
+#: mikrotik_userman_dashboard.html:308
+msgid "Active Sessions"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:150
+msgid "Analytics"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:151
+msgid "Maintenance"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:152
+msgid "Settings"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:153
+msgid "Logout"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:156
+msgid "The IT Dad"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:157
+msgid "+(211) 923 616 820"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:158
+msgid "justinkulang@gmail.com"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:174
+msgid "Total Users"
+msgstr "Utilisateurs totaux"
+
+#: mikrotik_userman_dashboard.html:186
+msgid "Welcome to Hotspot Manager v2. Use the menu on the left to navigate."
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:193
+msgid "User List"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:197
+msgid "Search Username/Comment..."
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:200
+msgid "Filter by Profile..."
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:205
+msgid "Filter by Status..."
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:215
+msgid "Status"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:216
+msgid "Data Limit"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:216 mikrotik_userman_dashboard.html:315
+msgid "Uptime"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:216
+msgid "Data Used"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:216 mikrotik_userman_dashboard.html:316
+#: mikrotik_userman_dashboard.html:379
+msgid "Actions"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:225
+msgid "Export Users"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:229
+msgid "Filter by Profile"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:232
+msgid "CSV"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:233
+msgid "Vouchers (HTML)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:234
+msgid "Vouchers (PDF)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:241
+msgid "Create Single User"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:247
+msgid "e.g., 1h30m, 30d"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:248 mikrotik_userman_dashboard.html:424
+msgid "Data Limit (MB)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:248
+msgid "e.g., 500"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:251
+msgid "Create User"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:255
+msgid "Batch Voucher Generation"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:258
+msgid "Number of Vouchers"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:260
+msgid "e.g., 2h, 30d"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:261
+msgid "Total Data Limit (MB)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:261
+msgid "e.g., 1024"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:262
+msgid "Batch Name / Comment Prefix"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:262
+msgid "e.g., Event2024"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:263
+msgid "Username Prefix (Optional)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:263
+msgid "e.g., v-"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:264
+msgid "Username Length (after prefix)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:265
+msgid "Password Length"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:267
+msgid "Username Characters"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:269 mikrotik_userman_dashboard.html:281
+msgid "Alphanumeric (Upper & Lower)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:270 mikrotik_userman_dashboard.html:282
+msgid "Alphanumeric (Upper Case Only)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:271 mikrotik_userman_dashboard.html:283
+msgid "Alphanumeric (Lower Case Only)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:272 mikrotik_userman_dashboard.html:284
+msgid "Numeric Only"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:273 mikrotik_userman_dashboard.html:285
+msgid "Alphabetical (Upper Case Only)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:274 mikrotik_userman_dashboard.html:286
+msgid "Alphabetical (Lower Case Only)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:278
+msgid "Password Characters"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:280
+msgid "Alphanumeric + Symbols"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:290
+msgid "Generate Vouchers"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:293
+msgid "Generated Credentials:"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:296
+msgid "View Vouchers (HTML)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:299
+msgid "Download Vouchers (PDF)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:315
+msgid "IP Address"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:315
+msgid "MAC Address"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:316
+msgid "Data Usage"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:316
+msgid "Time Left"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:329
+msgid "Refresh Analytics"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:332
+msgid "Total Data Transferred:"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:335
+msgid "Top Users by Data Usage"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:343
+msgid "Upload"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:344
+msgid "Download"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:345
+msgid "Total Data"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:356
+msgid "Data Usage by Profile"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:362
+msgid "Total Data Used"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:375
+msgid "User Profiles"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:379 mikrotik_userman_dashboard.html:449
+msgid "Name"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:379
+msgid "Rate Limit"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:379 mikrotik_userman_dashboard.html:451
+msgid "Session Timeout"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:379 mikrotik_userman_dashboard.html:452
+msgid "Shared Users"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:385
+msgid "Cleanup"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:386
+msgid ""
+"Automatically find and delete users who have used up their time or data "
+"allowance."
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:387
+msgid "Delete Expired Users"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:393
+msgid "Router Connection"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:399
+msgid "Enter new password to update"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:400
+msgid "Hotspot Login URL (for QR Codes)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:400
+msgid "e.g. http://my.hotspot/login"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:416
+msgid "Edit User:"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:421
+msgid "New Password"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:421
+msgid "Leave blank to keep current"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:431 mikrotik_userman_dashboard.html:455
+msgid "Cancel"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:432
+msgid "Save Changes"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:450
+msgid "Rate Limit (Upload/Download)"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:450
+msgid "e.g., 512k/2M"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:451
+msgid "e.g., 1d 00:00:00"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:452
+msgid "e.g., 1"
+msgstr ""
+
+#: mikrotik_userman_dashboard.html:456
+msgid "Save Profile"
+msgstr ""

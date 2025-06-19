@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotspot Manager v2</title>
+    <title>{{ _('Hotspot Manager v2') }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -140,28 +140,28 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-header">
-            <h2>Hotspot Manager</h2>
+            <h2>{{ _('Hotspot Manager') }}</h2>
         </div>
         <ul class="sidebar-nav">
-            <li><a href="#" class="nav-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="users"><i class="fas fa-users"></i><span>Users</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="create"><i class="fas fa-user-plus"></i><span>Create</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="sessions"><i class="fas fa-wifi"></i><span>Active Sessions</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="maintenance"><i class="fas fa-tools"></i><span>Maintenance</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
-            <li><a href="#" id="logoutButton" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+            <li><a href="#" class="nav-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i><span>{{ _('Dashboard') }}</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="users"><i class="fas fa-users"></i><span>{{ _('Users') }}</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="create"><i class="fas fa-user-plus"></i><span>{{ _('Create') }}</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="sessions"><i class="fas fa-wifi"></i><span>{{ _('Active Sessions') }}</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="analytics"><i class="fas fa-chart-line"></i><span>{{ _('Analytics') }}</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="maintenance"><i class="fas fa-tools"></i><span>{{ _('Maintenance') }}</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="settings"><i class="fas fa-cog"></i><span>{{ _('Settings') }}</span></a></li>
+            <li><a href="#" id="logoutButton" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>{{ _('Logout') }}</span></a></li>
         </ul>
         <div class="sidebar-footer" style="text-align: center; padding: 15px 10px; font-size: 0.85em; color: #495057; border-top: 1px solid #dee2e6; margin-top: auto;">
-            <p style="margin-bottom: 5px;"><strong>The IT Dad</strong></p>
-            <p style="margin-bottom: 3px; font-size: 0.95em;">+(211) 923 616 820</p>
-            <p style="font-size: 0.95em;"><a href="mailto:justinkulang@gmail.com" style="color: var(--primary-color); text-decoration: none;">justinkulang@gmail.com</a></p>
+            <p style="margin-bottom: 5px;"><strong>{{ _('The IT Dad') }}</strong></p>
+            <p style="margin-bottom: 3px; font-size: 0.95em;">{{ _('+(211) 923 616 820') }}</p>
+            <p style="font-size: 0.95em;"><a href="mailto:justinkulang@gmail.com" style="color: var(--primary-color); text-decoration: none;">{{ _('justinkulang@gmail.com') }}</a></p>
         </div>
     </aside>
     <main class="main-content">
         <div class="page-header">
-            <h1 id="pageTitle">Dashboard</h1>
-            <div id="connectionStatus" class="disconnected"><i class="fas fa-exclamation-triangle"></i><span>Connecting...</span></div>
+            <h1 id="pageTitle">{{ _('Dashboard') }}</h1>
+            <div id="connectionStatus" class="disconnected"><i class="fas fa-exclamation-triangle"></i><span>{{ _('Connecting...') }}</span></div>
         </div>
         <div id="globalAlert" class="alert"></div>
 
@@ -171,40 +171,40 @@
                     <i class="fas fa-users stat-card-icon"></i>
                     <div class="stat-card-info">
                         <h3 id="totalUsers">-</h3>
-                        <p>Total Users</p>
+                        <p>{{ _('Total Users') }}</p>
                     </div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-wifi stat-card-icon" style="color: var(--success-color);"></i>
                     <div class="stat-card-info">
                         <h3 id="activeSessions">-</h3>
-                        <p>Active Sessions</p>
+                        <p>{{ _('Active Sessions') }}</p>
                     </div>
                 </div>
             </div>
             <div class="panel">
-                <p>Welcome to Hotspot Manager v2. Use the menu on the left to navigate.</p>
+                <p>{{ _('Welcome to Hotspot Manager v2. Use the menu on the left to navigate.') }}</p>
             </div>
         </div>
 
         <div id="users" class="tab-content">
             <div class="panel">
                 <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3>User List</h3>
-                    <button class="btn btn-primary btn-sm" onclick="loadUsers()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    <h3>{{ _('User List') }}</h3>
+                    <button class="btn btn-primary btn-sm" onclick="loadUsers()"><i class="fas fa-sync-alt"></i> {{ _('Refresh') }}</button>
                 </div>
                 <div class="form-grid" style="margin-bottom: 1.5rem;">
-                    <div class="form-group"><input type="text" id="userSearchInput" placeholder="Search Username/Comment..."></div>
+                    <div class="form-group"><input type="text" id="userSearchInput" placeholder="{{ _('Search Username/Comment...') }}"></div>
                     <div class="form-group">
                         <select id="userFilterProfile">
-                            <option value="">Filter by Profile...</option>
+                            <option value="">{{ _('Filter by Profile...') }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select id="userFilterStatus">
-                            <option value="">Filter by Status...</option>
-                            <option value="active">Active</option>
-                            <option value="disabled">Disabled</option>
+                            <option value="">{{ _('Filter by Status...') }}</option>
+                            <option value="active">{{ _('Active') }}</option>
+                            <option value="disabled">{{ _('Disabled') }}</option>
                         </select>
                     </div>
                 </div>
@@ -212,91 +212,91 @@
                     <table id="usersTable">
                         <thead>
                             <tr>
-                                <th>Username</th><th>Profile</th><th>Status</th><th>Time Limit</th>
-                                <th>Data Limit</th><th>Uptime</th><th>Data Used</th><th>Comment</th><th>Actions</th>
+                                <th>{{ _('Username') }}</th><th>{{ _('Profile') }}</th><th>{{ _('Status') }}</th><th>{{ _('Time Limit') }}</th>
+                                <th>{{ _('Data Limit') }}</th><th>{{ _('Uptime') }}</th><th>{{ _('Data Used') }}</th><th>{{ _('Comment') }}</th><th>{{ _('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="9" style="text-align: center;">Loading users...</td></tr>
+                            <tr><td colspan="9" style="text-align: center;">{{ _('Loading users...') }}</td></tr>
                         </tbody>
                     </table>
                 </div>
                  <div class="panel-header" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
-                    <h3>Export Users</h3>
+                    <h3>{{ _('Export Users') }}</h3>
                 </div>
                  <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
                     <div class="form-group" style="flex-grow: 1;">
-                         <label for="exportProfileFilter">Filter by Profile</label>
+                         <label for="exportProfileFilter">{{ _('Filter by Profile') }}</label>
                         <select id="exportProfileFilter"></select>
                     </div>
-                    <button class="btn btn-success" onclick="triggerExport('csv')"><i class="fas fa-file-csv"></i> CSV</button>
-                    <button class="btn btn-primary" onclick="triggerExport('html_voucher')"><i class="fas fa-ticket-alt"></i> Vouchers (HTML)</button>
-                    <button class="btn btn-danger" onclick="triggerExport('pdf_voucher')"><i class="fas fa-file-pdf"></i> Vouchers (PDF)</button>
+                    <button class="btn btn-success" onclick="triggerExport('csv')"><i class="fas fa-file-csv"></i> {{ _('CSV') }}</button>
+                    <button class="btn btn-primary" onclick="triggerExport('html_voucher')"><i class="fas fa-ticket-alt"></i> {{ _('Vouchers (HTML)') }}</button>
+                    <button class="btn btn-danger" onclick="triggerExport('pdf_voucher')"><i class="fas fa-file-pdf"></i> {{ _('Vouchers (PDF)') }}</button>
                 </div>
             </div>
         </div>
 
         <div id="create" class="tab-content">
             <div class="panel">
-                <h3 class="panel-header">Create Single User</h3>
+                <h3 class="panel-header">{{ _('Create Single User') }}</h3>
                 <form id="createUserForm">
                     <div class="form-grid">
-                        <div class="form-group"><label for="username">Username</label><input type="text" id="username" required></div>
-                        <div class="form-group"><label for="password">Password</label><input type="text" id="password" required></div>
-                        <div class="form-group"><label for="profile">Profile</label><select id="profile"></select></div>
-                        <div class="form-group"><label for="timeLimit">Time Limit</label><input type="text" id="timeLimit" placeholder="e.g., 1h30m, 30d"></div>
-                        <div class="form-group"><label for="dataLimit">Data Limit (MB)</label><input type="number" id="dataLimit" placeholder="e.g., 500"></div>
-                        <div class="form-group"><label for="comment">Comment</label><input type="text" id="comment"></div>
+                        <div class="form-group"><label for="username">{{ _('Username') }}</label><input type="text" id="username" required></div>
+                        <div class="form-group"><label for="password">{{ _('Password') }}</label><input type="text" id="password" required></div>
+                        <div class="form-group"><label for="profile">{{ _('Profile') }}</label><select id="profile"></select></div>
+                        <div class="form-group"><label for="timeLimit">{{ _('Time Limit') }}</label><input type="text" id="timeLimit" placeholder="{{ _('e.g., 1h30m, 30d') }}"></div>
+                        <div class="form-group"><label for="dataLimit">{{ _('Data Limit (MB)') }}</label><input type="number" id="dataLimit" placeholder="{{ _('e.g., 500') }}"></div>
+                        <div class="form-group"><label for="comment">{{ _('Comment') }}</label><input type="text" id="comment"></div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Create User</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> {{ _('Create User') }}</button>
                 </form>
             </div>
             <div class="panel">
-                <h3 class="panel-header">Batch Voucher Generation</h3>
+                <h3 class="panel-header">{{ _('Batch Voucher Generation') }}</h3>
                 <form id="bulkCreateUserForm">
                      <div class="form-grid">
-                        <div class="form-group"><label for="bulkNumberOfUsers">Number of Vouchers</label><input type="number" id="bulkNumberOfUsers" required></div>
-                        <div class="form-group"><label for="bulkProfile">Profile</label><select id="bulkProfile" required></select></div>
-                        <div class="form-group"><label for="bulkTimeLimit">Time Limit</label><input type="text" id="bulkTimeLimit" placeholder="e.g., 2h, 30d"></div>
-                        <div class="form-group"><label for="bulkDataLimit">Total Data Limit (MB)</label><input type="number" id="bulkDataLimit" placeholder="e.g., 1024"></div>
-                        <div class="form-group"><label for="bulkCommentPrefix">Batch Name / Comment Prefix</label><input type="text" id="bulkCommentPrefix" placeholder="e.g., Event2024"></div>
-                        <div class="form-group"><label for="bulkUsernamePrefix">Username Prefix (Optional)</label><input type="text" id="bulkUsernamePrefix" placeholder="e.g., v-"></div>
-                        <div class="form-group"><label for="bulkUsernameLength">Username Length (after prefix)</label><input type="number" id="bulkUsernameLength" value="6"></div>
-                        <div class="form-group"><label for="bulkPasswordLength">Password Length</label><input type="number" id="bulkPasswordLength" value="6"></div>
+                        <div class="form-group"><label for="bulkNumberOfUsers">{{ _('Number of Vouchers') }}</label><input type="number" id="bulkNumberOfUsers" required></div>
+                        <div class="form-group"><label for="bulkProfile">{{ _('Profile') }}</label><select id="bulkProfile" required></select></div>
+                        <div class="form-group"><label for="bulkTimeLimit">{{ _('Time Limit') }}</label><input type="text" id="bulkTimeLimit" placeholder="{{ _('e.g., 2h, 30d') }}"></div>
+                        <div class="form-group"><label for="bulkDataLimit">{{ _('Total Data Limit (MB)') }}</label><input type="number" id="bulkDataLimit" placeholder="{{ _('e.g., 1024') }}"></div>
+                        <div class="form-group"><label for="bulkCommentPrefix">{{ _('Batch Name / Comment Prefix') }}</label><input type="text" id="bulkCommentPrefix" placeholder="{{ _('e.g., Event2024') }}"></div>
+                        <div class="form-group"><label for="bulkUsernamePrefix">{{ _('Username Prefix (Optional)') }}</label><input type="text" id="bulkUsernamePrefix" placeholder="{{ _('e.g., v-') }}"></div>
+                        <div class="form-group"><label for="bulkUsernameLength">{{ _('Username Length (after prefix)') }}</label><input type="number" id="bulkUsernameLength" value="6"></div>
+                        <div class="form-group"><label for="bulkPasswordLength">{{ _('Password Length') }}</label><input type="number" id="bulkPasswordLength" value="6"></div>
                         <div class="form-group">
-                            <label for="bulkUsernameCharset">Username Characters</label>
+                            <label for="bulkUsernameCharset">{{ _('Username Characters') }}</label>
                             <select id="bulkUsernameCharset">
-                                <option value="alphanumeric" selected>Alphanumeric (Upper & Lower)</option>
-                                <option value="alphanumeric_upper">Alphanumeric (Upper Case Only)</option>
-                                <option value="alphanumeric_lower">Alphanumeric (Lower Case Only)</option>
-                                <option value="numeric">Numeric Only</option>
-                                <option value="alpha_upper">Alphabetical (Upper Case Only)</option>
-                                <option value="alpha_lower">Alphabetical (Lower Case Only)</option>
+                                <option value="alphanumeric" selected>{{ _('Alphanumeric (Upper & Lower)') }}</option>
+                                <option value="alphanumeric_upper">{{ _('Alphanumeric (Upper Case Only)') }}</option>
+                                <option value="alphanumeric_lower">{{ _('Alphanumeric (Lower Case Only)') }}</option>
+                                <option value="numeric">{{ _('Numeric Only') }}</option>
+                                <option value="alpha_upper">{{ _('Alphabetical (Upper Case Only)') }}</option>
+                                <option value="alpha_lower">{{ _('Alphabetical (Lower Case Only)') }}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="bulkPasswordCharset">Password Characters</label>
+                            <label for="bulkPasswordCharset">{{ _('Password Characters') }}</label>
                             <select id="bulkPasswordCharset">
-                                <option value="alphanumeric_symbols" selected>Alphanumeric + Symbols</option>
-                                <option value="alphanumeric">Alphanumeric (Upper & Lower)</option>
-                                <option value="alphanumeric_upper">Alphanumeric (Upper Case Only)</option>
-                                <option value="alphanumeric_lower">Alphanumeric (Lower Case Only)</option>
-                                <option value="numeric">Numeric Only</option>
-                                <option value="alpha_upper">Alphabetical (Upper Case Only)</option>
-                                <option value="alpha_lower">Alphabetical (Lower Case Only)</option>
+                                <option value="alphanumeric_symbols" selected>{{ _('Alphanumeric + Symbols') }}</option>
+                                <option value="alphanumeric">{{ _('Alphanumeric (Upper & Lower)') }}</option>
+                                <option value="alphanumeric_upper">{{ _('Alphanumeric (Upper Case Only)') }}</option>
+                                <option value="alphanumeric_lower">{{ _('Alphanumeric (Lower Case Only)') }}</option>
+                                <option value="numeric">{{ _('Numeric Only') }}</option>
+                                <option value="alpha_upper">{{ _('Alphabetical (Upper Case Only)') }}</option>
+                                <option value="alpha_lower">{{ _('Alphabetical (Lower Case Only)') }}</option>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-users-cog"></i> Generate Vouchers</button>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-users-cog"></i> {{ _('Generate Vouchers') }}</button>
                 </form>
                 <div id="bulkCreateResultDisplay" style="display:none; margin-top: 1.5rem;">
-                    <h4>Generated Credentials:</h4>
+                    <h4>{{ _('Generated Credentials:') }}</h4>
                     <textarea id="bulkCreateCredentials" rows="8" class="form-group" style="width:100%; font-family: monospace;" readonly></textarea>
                     <button id="exportVouchersHTMLButton" class="btn btn-info" style="margin-top: 10px; display: none;">
-                        <i class="fas fa-eye"></i> View Vouchers (HTML)
+                        <i class="fas fa-eye"></i> {{ _('View Vouchers (HTML)') }}
                     </button>
                     <button id="exportVouchersPDFButton" class="btn btn-danger" style="margin-top: 10px; margin-left: 10px; display: none;">
-                        <i class="fas fa-file-pdf"></i> Download Vouchers (PDF)
+                        <i class="fas fa-file-pdf"></i> {{ _('Download Vouchers (PDF)') }}
                     </button>
                 </div>
             </div>
@@ -305,19 +305,19 @@
         <div id="sessions" class="tab-content">
              <div class="panel">
                 <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3>Active Sessions</h3>
-                    <button class="btn btn-primary btn-sm" onclick="loadActiveSessions()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    <h3>{{ _('Active Sessions') }}</h3>
+                    <button class="btn btn-primary btn-sm" onclick="loadActiveSessions()"><i class="fas fa-sync-alt"></i> {{ _('Refresh') }}</button>
                 </div>
                 <div class="table-container">
                     <table id="sessionsTable">
                         <thead>
                             <tr>
-                                <th>Username</th><th>IP Address</th><th>MAC Address</th><th>Uptime</th>
-                                <th>Data Usage</th><th>Time Left</th><th>Actions</th>
+                                <th>{{ _('Username') }}</th><th>{{ _('IP Address') }}</th><th>{{ _('MAC Address') }}</th><th>{{ _('Uptime') }}</th>
+                                <th>{{ _('Data Usage') }}</th><th>{{ _('Time Left') }}</th><th>{{ _('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="7" style="text-align: center;">Loading sessions...</td></tr>
+                            <tr><td colspan="7" style="text-align: center;">{{ _('Loading sessions...') }}</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -326,44 +326,44 @@
 
         <div id="analytics" class="tab-content">
             <div style="margin-bottom: 1rem; text-align: right;">
-                <button id="refreshAnalyticsButton" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Refresh Analytics</button>
+                <button id="refreshAnalyticsButton" class="btn btn-primary"><i class="fas fa-sync-alt"></i> {{ _('Refresh Analytics') }}</button>
             </div>
             <div class="panel">
-                <h3 id="analyticsTotalData" style="font-size: 1.5em; color: var(--primary-color); text-align: center;">Total Data Transferred: -</h3>
+                <h3 id="analyticsTotalData" style="font-size: 1.5em; color: var(--primary-color); text-align: center;">{{ _('Total Data Transferred:') }} -</h3>
             </div>
             <div class="panel">
-                <h3 class="panel-header">Top Users by Data Usage</h3>
+                <h3 class="panel-header">{{ _('Top Users by Data Usage') }}</h3>
                 <div class="table-container">
                     <table id="analyticsTopUsersTable">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Username</th>
-                                <th>Profile</th>
-                                <th>Upload</th>
-                                <th>Download</th>
-                                <th>Total Data</th>
-                                <th>Comment</th>
+                                <th>{{ _('Username') }}</th>
+                                <th>{{ _('Profile') }}</th>
+                                <th>{{ _('Upload') }}</th>
+                                <th>{{ _('Download') }}</th>
+                                <th>{{ _('Total Data') }}</th>
+                                <th>{{ _('Comment') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="7" style="text-align:center;">Loading analytics data...</td></tr>
+                            <tr><td colspan="7" style="text-align:center;">{{ _('Loading analytics data...') }}</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="panel">
-                <h3 class="panel-header">Data Usage by Profile</h3>
+                <h3 class="panel-header">{{ _('Data Usage by Profile') }}</h3>
                 <div class="table-container">
                     <table id="analyticsProfileUsageTable">
                         <thead>
                             <tr>
-                                <th>Profile</th>
-                                <th>Total Data Used</th>
+                                <th>{{ _('Profile') }}</th>
+                                <th>{{ _('Total Data Used') }}</th>
                                 </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="2" style="text-align:center;">Loading analytics data...</td></tr>
+                            <tr><td colspan="2" style="text-align:center;">{{ _('Loading analytics data...') }}</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -372,36 +372,36 @@
         
         <div id="maintenance" class="tab-content">
             <div class="panel">
-                <h3 class="panel-header">User Profiles</h3>
-                <button class="btn btn-success" style="margin-bottom: 1rem;" onclick="openProfileModal()"><i class="fas fa-plus"></i> Add Profile</button>
+                <h3 class="panel-header">{{ _('User Profiles') }}</h3>
+                <button class="btn btn-success" style="margin-bottom: 1rem;" onclick="openProfileModal()"><i class="fas fa-plus"></i> {{ _('Add Profile') }}</button>
                 <div class="table-container">
                     <table id="profilesTable">
-                        <thead><tr><th>Name</th><th>Rate Limit</th><th>Session Timeout</th><th>Shared Users</th><th>Actions</th></tr></thead>
-                        <tbody><tr><td colspan="5" style="text-align: center;">Loading profiles...</td></tr></tbody>
+                        <thead><tr><th>{{ _('Name') }}</th><th>{{ _('Rate Limit') }}</th><th>{{ _('Session Timeout') }}</th><th>{{ _('Shared Users') }}</th><th>{{ _('Actions') }}</th></tr></thead>
+                        <tbody><tr><td colspan="5" style="text-align: center;">{{ _('Loading profiles...') }}</td></tr></tbody>
                     </table>
                 </div>
             </div>
             <div class="panel">
-                <h3 class="panel-header">Cleanup</h3>
-                <p>Automatically find and delete users who have used up their time or data allowance.</p>
-                <button class="btn btn-danger" onclick="deleteExpiredUsers()"><i class="fas fa-trash-alt"></i> Delete Expired Users</button>
+                <h3 class="panel-header">{{ _('Cleanup') }}</h3>
+                <p>{{ _('Automatically find and delete users who have used up their time or data allowance.') }}</p>
+                <button class="btn btn-danger" onclick="deleteExpiredUsers()"><i class="fas fa-trash-alt"></i> {{ _('Delete Expired Users') }}</button>
             </div>
         </div>
 
         <div id="settings" class="tab-content">
             <div class="panel">
-                <h3 class="panel-header">Router Connection</h3>
+                <h3 class="panel-header">{{ _('Router Connection') }}</h3>
                  <form id="configForm">
                     <div class="form-grid">
-                        <div class="form-group"><label>Router IP Address</label><input type="text" id="routerHost"></div>
-                        <div class="form-group"><label>API Port</label><input type="number" id="routerPort"></div>
-                        <div class="form-group"><label>Username</label><input type="text" id="routerUsername"></div>
-                        <div class="form-group"><label>Password</label><input type="password" id="routerPassword" placeholder="Enter new password to update"></div>
-                        <div class="form-group"><label>Hotspot Login URL (for QR Codes)</label><input type="text" id="hotspotLoginUrl" placeholder="e.g. http://my.hotspot/login"></div>
+                        <div class="form-group"><label>{{ _('Router IP Address') }}</label><input type="text" id="routerHost"></div>
+                        <div class="form-group"><label>{{ _('API Port') }}</label><input type="number" id="routerPort"></div>
+                        <div class="form-group"><label>{{ _('Username') }}</label><input type="text" id="routerUsername"></div>
+                        <div class="form-group"><label>{{ _('Password') }}</label><input type="password" id="routerPassword" placeholder="{{ _('Enter new password to update') }}"></div>
+                        <div class="form-group"><label>{{ _('Hotspot Login URL (for QR Codes)') }}</label><input type="text" id="hotspotLoginUrl" placeholder="{{ _('e.g. http://my.hotspot/login') }}"></div>
                     </div>
                     <div style="display: flex; gap: 1rem;">
-                        <button type="button" class="btn btn-primary" onclick="testConnection()"><i class="fas fa-plug"></i> Test</button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
+                        <button type="button" class="btn btn-primary" onclick="testConnection()"><i class="fas fa-plug"></i> {{ _('Test') }}</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> {{ _('Save') }}</button>
                     </div>
                 </form>
             </div>
@@ -413,23 +413,23 @@
             <div class="modal-content">
                 <form id="editUserForm">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit User: <span id="editUsernameDisplay"></span></h5>
+                        <h5 class="modal-title">{{ _('Edit User:') }} <span id="editUsernameDisplay"></span></h5>
                         <button type="button" class="close-button" onclick="closeModal('userModal')">&times;</button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="editUsernameOrig">
-                        <div class="form-group"><label>New Password</label><input type="text" id="editPassword" placeholder="Leave blank to keep current"></div>
-                        <div class="form-group"><label>Profile</label><select id="editProfile"></select></div>
-                        <div class="form-group"><label>Time Limit</label><input type="text" id="editTimeLimit"></div>
-                        <div class="form-group"><label>Data Limit (MB)</label><input type="number" id="editDataLimit"></div>
-                        <div class="form-group"><label>Comment</label><input type="text" id="editComment"></div>
+                        <div class="form-group"><label>{{ _('New Password') }}</label><input type="text" id="editPassword" placeholder="{{ _('Leave blank to keep current') }}"></div>
+                        <div class="form-group"><label>{{ _('Profile') }}</label><select id="editProfile"></select></div>
+                        <div class="form-group"><label>{{ _('Time Limit') }}</label><input type="text" id="editTimeLimit"></div>
+                        <div class="form-group"><label>{{ _('Data Limit (MB)') }}</label><input type="number" id="editDataLimit"></div>
+                        <div class="form-group"><label>{{ _('Comment') }}</label><input type="text" id="editComment"></div>
                         <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                            <input type="checkbox" id="editDisabled" style="width: auto;"><label for="editDisabled" style="margin: 0;">Disabled</label>
+                            <input type="checkbox" id="editDisabled" style="width: auto;"><label for="editDisabled" style="margin: 0;">{{ _('Disabled') }}</label>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" onclick="closeModal('userModal')">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn" onclick="closeModal('userModal')">{{ _('Cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ _('Save Changes') }}</button>
                     </div>
                 </form>
             </div>
@@ -441,19 +441,19 @@
             <div class="modal-content">
                 <form id="profileForm">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="profileModalTitle">Add New Profile</h5>
+                        <h5 class="modal-title" id="profileModalTitle">{{ _('Add New Profile') }}</h5>
                         <button type="button" class="close-button" onclick="closeModal('profileModal')">&times;</button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="profileId">
-                        <div class="form-group"><label for="profileName">Name</label><input type="text" id="profileName" required></div>
-                        <div class="form-group"><label for="profileRateLimit">Rate Limit (Upload/Download)</label><input type="text" id="profileRateLimit" placeholder="e.g., 512k/2M"></div>
-                        <div class="form-group"><label for="profileSessionTimeout">Session Timeout</label><input type="text" id="profileSessionTimeout" placeholder="e.g., 1d 00:00:00"></div>
-                        <div class="form-group"><label for="profileSharedUsers">Shared Users</label><input type="number" id="profileSharedUsers" placeholder="e.g., 1"></div>
+                        <div class="form-group"><label for="profileName">{{ _('Name') }}</label><input type="text" id="profileName" required></div>
+                        <div class="form-group"><label for="profileRateLimit">{{ _('Rate Limit (Upload/Download)') }}</label><input type="text" id="profileRateLimit" placeholder="{{ _('e.g., 512k/2M') }}"></div>
+                        <div class="form-group"><label for="profileSessionTimeout">{{ _('Session Timeout') }}</label><input type="text" id="profileSessionTimeout" placeholder="{{ _('e.g., 1d 00:00:00') }}"></div>
+                        <div class="form-group"><label for="profileSharedUsers">{{ _('Shared Users') }}</label><input type="number" id="profileSharedUsers" placeholder="{{ _('e.g., 1') }}"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" onclick="closeModal('profileModal')">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save Profile</button>
+                        <button type="button" class="btn" onclick="closeModal('profileModal')">{{ _('Cancel') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ _('Save Profile') }}</button>
                     </div>
                 </form>
             </div>
@@ -468,6 +468,22 @@ let currentSessions = [];
 let lastGeneratedBatchCredentials = []; // To store the last batch of generated credentials
 let analyticsDataLoaded = false; // Flag for initial analytics load
 
+window.i18n = {}; // Global store for translations
+
+// Translation function
+function _js(key, ...args) {
+    let translated = window.i18n[key] || key;
+    if (args.length > 0) {
+        args.forEach((arg, index) => {
+            // Simple positional placeholder {0}, {1}, etc.
+            // For named placeholders, you might need a more complex regex or parsing
+            const placeholder = new RegExp(`\\{${index}\\}`, 'g');
+            translated = translated.replace(placeholder, arg);
+        });
+    }
+    return translated;
+}
+
 const logger = { // Simple logger
     info: console.log,
     warn: console.warn,
@@ -476,7 +492,24 @@ const logger = { // Simple logger
 };
 
 // --- Init & Navigation ---
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Fetch translations first
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/translations`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        window.i18n = await response.json();
+    } catch (error) {
+        logger.error('Failed to load translations:', error);
+        // Show a basic, non-translatable error to the user if translations fail to load
+        const statusEl = document.getElementById('connectionStatus');
+        if (statusEl) {
+            statusEl.innerHTML = 'Error loading translations. Please refresh.';
+            statusEl.className = 'disconnected';
+        }
+    }
+
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
@@ -516,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutButton) {
         logoutButton.addEventListener('click', async function(event) {
             event.preventDefault();
-            if (confirm('Are you sure you want to logout?')) {
+            if (confirm(_js('confirmLogout'))) {
                 showGlobalSpinner(true); // Show spinner during API call
                 try {
                     const result = await apiCall('/logout', { method: 'POST' });
@@ -529,8 +562,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } catch (error) {
                     // This catch is for unexpected errors not handled by apiCall's own try/catch
-                    logger.error("Logout failed unexpectedly:", error);
-                    showAlert('globalAlert', 'danger', 'Logout failed unexpectedly. Please try again.');
+                    logger.error(_js('Logout failed unexpectedly. Please try again.'), error);
+                    showAlert('globalAlert', 'danger', _js('Logout failed unexpectedly. Please try again.'));
                     showGlobalSpinner(false);
                 }
             }
@@ -541,12 +574,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exportHTMLButton) {
         exportHTMLButton.addEventListener('click', function() {
             if (!lastGeneratedBatchCredentials || lastGeneratedBatchCredentials.length === 0) {
-                showAlert('globalAlert', 'warning', 'No generated voucher data available to view.');
+                showAlert('globalAlert', 'warning', _js('No generated voucher data available to view.'));
                 return;
             }
             const hotspotLoginUrlValue = document.getElementById('hotspotLoginUrl').value;
             if (!hotspotLoginUrlValue) {
-                 showAlert('globalAlert', 'warning', 'Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.');
+                 showAlert('globalAlert', 'warning', _js('Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.'));
                 // Allow to proceed if user wants to view without QR, backend will handle missing URL for QR.
             }
 
@@ -579,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exportPDFButton && !exportPDFButton.hasAttribute('data-listener-attached')) { // Check if listener already attached
         exportPDFButton.addEventListener('click', function() {
             if (!lastGeneratedBatchCredentials || lastGeneratedBatchCredentials.length === 0) {
-                showAlert('globalAlert', 'warning', 'No generated voucher data available for PDF export.');
+                showAlert('globalAlert', 'warning', _js('No generated voucher data available for PDF export.'));
                 return;
             }
             const hotspotLoginUrlValue = document.getElementById('hotspotLoginUrl').value;
@@ -587,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // QRCODE_AVAILABLE is a Python variable, not directly usable in JS unless passed to template.
             // For now, just check if hotspotLoginUrlValue exists for a more generic warning.
             if (!hotspotLoginUrlValue) { 
-                 showAlert('globalAlert', 'info', 'Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.');
+                 showAlert('globalAlert', 'info', _js('Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.'));
             }
 
             const form = document.createElement('form');
@@ -661,22 +694,22 @@ async function apiCall(endpoint, options = {}) {
                 } catch (e) {
                     // If JSON parsing fails even if header says JSON, read as text.
                     logger.error(`apiCall: Failed to parse JSON error response from ${endpoint} despite Content-Type. Error: ${e}`);
-                    errorPayload = { message: (await response.text()).substring(0,500) || `HTTP error! status: ${response.status}` };
+                    errorPayload = { message: (await response.text()).substring(0,500) || _js('HTTP error! status: {0}', response.status) };
                 }
             } else {
                  // If not JSON, capture the text response for the error message
                 const textResponse = await response.text();
                 logger.warn(`apiCall to ${endpoint} received non-JSON error response (type: ${contentType}). Body: ${textResponse.substring(0, 500)}...`);
-                errorPayload = { message: textResponse.substring(0,500) || `HTTP error! status: ${response.status}, non-JSON response.` };
+                errorPayload = { message: textResponse.substring(0,500) || _js('HTTP error! status: {0}', response.status) + `, non-JSON response.` };
             }
-            throw new Error(errorPayload.message || `HTTP error! status: ${response.status}`);
+            throw new Error(errorPayload.message || _js('HTTP error! status: {0}', response.status));
         }
 
         // If response.ok, we still must check content type before parsing
         if (contentType && contentType.indexOf("application/json") === -1) {
             const textResponse = await response.text();
             logger.error(`apiCall to ${endpoint} expected JSON but received ${contentType}. Response body: ${textResponse.substring(0, 500)}...`);
-            throw new Error(`Expected JSON response from server for ${endpoint}, but received ${contentType}.`);
+            throw new Error(_js('Expected JSON response from server for {0}, but received {1}.', endpoint, contentType));
         }
         
         // If we reach here, response is OK and content type indicates JSON (or no content type header, assume JSON)
@@ -698,18 +731,17 @@ async function checkConnection() {
 
     if (result && result.success) {
         statusEl.className = 'connected';
-        statusEl.innerHTML = `<i class="fas fa-check-circle"></i><span> ${result.message}</span>`;
+        statusEl.innerHTML = `<i class="fas fa-check-circle"></i><span> ${result.message}</span>`; // Message from backend is already translated
         
         // Ensure globalAlert is hidden if it was previously shown for a connection error
-        // (though this scenario is less likely now with upfront login)
         const globalAlert = document.getElementById('globalAlert');
-        if (globalAlert.textContent.includes("Could not connect")) { // More generic check
+        if (globalAlert.textContent.includes(_js("Could not connect"))) { // More generic check
             globalAlert.style.display = 'none';
         }
     } else {
         statusEl.className = 'disconnected';
-        const failureMessage = result ? result.message : 'Connection test failed. Router might be unreachable.';
-        statusEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i><span> ${failureMessage}</span>`;
+        const failureMessage = result ? result.message : _js('Connection test failed. Router might be unreachable.');
+        statusEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i><span> ${failureMessage}</span>`; // result.message from backend is translated
         // No longer navigate to settings or show a prominent global alert here.
         // The before_request hook will handle persistent connection issues by redirecting to login.
         // A subtle update to connectionStatus is sufficient if testConnection is manually clicked
@@ -727,13 +759,13 @@ async function loadDashboardStats() {
 
 async function loadUsers(silent = false) {
     const tbody = document.querySelector('#usersTable tbody');
-    if (!silent) tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;"><div class="loading-spinner"></div></td></tr>`;
+    if (!silent) tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;"><div class="loading-spinner"></div> ${_js('Loading users...')}</td></tr>`;
     const data = await apiCall('/users');
     if (data && data.users) {
         currentUsers = data.users;
         filterAndDisplayUsers();
     } else {
-        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">Could not load users.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">${_js('Could not load users.')}</td></tr>`;
     }
 }
 
@@ -747,7 +779,7 @@ async function loadProfiles() {
             const select = document.querySelector(id);
             if(select) {
                 const currentVal = select.value;
-                select.innerHTML = `<option value="">${id.includes('Filter') ? 'All Profiles' : 'Select Profile'}</option>`;
+                select.innerHTML = `<option value="">${id.includes('Filter') ? _js('All Profiles') : _js('Select Profile')}</option>`;
                 currentProfiles.forEach(p => select.add(new Option(p.name, p.name)));
                 if(currentVal) select.value = currentVal;
             }
@@ -762,7 +794,7 @@ async function loadActiveSessions() {
     if (data && data.sessions) {
         currentSessions = data.sessions;
         if (currentSessions.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No active sessions found.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">${_js('No active sessions found.')}</td></tr>`;
             return;
         }
         tbody.innerHTML = currentSessions.map(s => `
@@ -772,16 +804,16 @@ async function loadActiveSessions() {
                 <td>${s['mac-address'] || ''}</td>
                 <td>${s.uptime || ''}</td>
                 <td>${formatBytes(s['bytes-in'])} / ${formatBytes(s['bytes-out'])}</td>
-                <td>${s['session-time-left'] || 'Unlimited'}</td>
+                <td>${s['session-time-left'] || _js('Unlimited')}</td>
                 <td>
                     <button class="btn btn-danger btn-sm" onclick="disconnectUser('${s['.id']}')">
-                        <i class="fas fa-times"></i> Disconnect
+                        <i class="fas fa-times"></i> ${_js('Disconnect')}
                     </button>
                 </td>
             </tr>
         `).join('');
     } else {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Could not load sessions.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">${_js('Could not load sessions.')}</td></tr>`;
     }
 }
 
@@ -818,7 +850,7 @@ function filterAndDisplayUsers() {
     
     const tbody = document.querySelector('#usersTable tbody');
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">No users match the criteria.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;">${_js('No users match the criteria.')}</td></tr>`;
         return;
     }
 
@@ -826,8 +858,8 @@ function filterAndDisplayUsers() {
         <tr>
             <td>${user.name}</td>
             <td>${user.profile || ''}</td>
-            <td><span class="status-badge ${user.disabled === 'true' ? 'status-disabled' : 'status-active'}">${user.disabled === 'true' ? 'Disabled' : 'Active'}</span></td>
-            <td>${user['limit-uptime'] || 'Unlimited'}</td>
+            <td><span class="status-badge ${user.disabled === 'true' ? 'status-disabled' : 'status-active'}">${user.disabled === 'true' ? _js('Disabled') : _js('Active')}</span></td>
+            <td>${user['limit-uptime'] || _js('Unlimited')}</td>
             <td>${formatBytes(user['limit-bytes-total'])}</td>
             <td>${user.uptime || '0s'}</td>
             <td>${formatBytes(parseInt(user['bytes-in'] || 0) + parseInt(user['bytes-out'] || 0))}</td>
@@ -843,7 +875,7 @@ function filterAndDisplayUsers() {
 function displayProfiles() {
     const tbody = document.querySelector('#profilesTable tbody');
      if (currentProfiles.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No profiles found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">${_js('No profiles found.')}</td></tr>`;
         return;
     }
     tbody.innerHTML = currentProfiles.map(p => `
@@ -876,7 +908,7 @@ async function handleConfigSave(e) {
 
     const result = await apiCall('/config', { method: 'POST', body: JSON.stringify(payload) });
     if(result) {
-        showAlert('globalAlert', 'success', 'Configuration saved! Testing new connection...');
+        showAlert('globalAlert', 'success', _js('Configuration saved! Testing new connection...'));
         await checkConnection();
     }
 }
@@ -892,8 +924,8 @@ async function handleCreateUser(e) {
         comment: document.getElementById('comment').value,
     };
     const result = await apiCall('/users', { method: 'POST', body: JSON.stringify(payload) });
-    if(result && result.success) {
-        showAlert('globalAlert', 'success', 'User created successfully!');
+    if(result && result.success) { // result.message is already translated from backend
+        showAlert('globalAlert', 'success', result.message || _js('User created successfully!'));
         e.target.reset();
         await loadUsers();
         await loadDashboardStats();
@@ -931,12 +963,12 @@ async function handleBulkCreateUsers(e) {
 
     const result = await apiCall('/bulk-create-users', { method: 'POST', body: JSON.stringify(payload) });
     if (result) {
-        showAlert('globalAlert', result.success ? 'success' : 'danger', result.message);
+        showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Backend message is translated
         if (result.created_credentials && result.created_credentials.length > 0) {
             lastGeneratedBatchCredentials = result.created_credentials; // Store for printing/viewing
             resultDisplayDiv.style.display = 'block';
             credentialsTextArea.value = result.created_credentials
-                .map(c => `Username: ${c.username}\tPassword: ${c.password}`)
+                .map(c => `${_js('Username')}: ${c.username}\t${_js('Password')}: ${c.password}`)
                 .join('\n');
             if(exportHTMLBtn) exportHTMLBtn.style.display = 'inline-flex'; 
             if(exportPDFBtn) exportPDFBtn.style.display = 'inline-flex'; 
@@ -969,8 +1001,8 @@ async function handleEditUser(e) {
     if (password) payload.password = password;
 
     const result = await apiCall(`/users/${username}`, { method: 'PUT', body: JSON.stringify(payload) });
-    if(result && result.success) {
-        showAlert('globalAlert', 'success', 'User updated successfully!');
+    if(result && result.success) { // result.message is already translated from backend
+        showAlert('globalAlert', 'success', result.message || _js('User updated successfully!'));
         closeModal('userModal');
         await loadUsers();
     }
@@ -990,18 +1022,18 @@ async function handleProfileSave(e) {
     const method = profileId ? 'PUT' : 'POST';
 
     const result = await apiCall(url, { method, body: JSON.stringify(payload) });
-    if (result && result.success) {
-        showAlert('globalAlert', 'success', `Profile ${profileId ? 'updated' : 'created'} successfully!`);
+    if (result && result.success) { // result.message is already translated from backend
+        showAlert('globalAlert', 'success', result.message || _js(profileId ? 'Profile updated successfully!' : 'Profile created successfully!'));
         closeModal('profileModal');
         await loadProfiles();
     }
 }
 
 async function deleteUser(username) {
-    if (!confirm(`Are you sure you want to delete user "${username}"?`)) return;
+    if (!confirm(_js('confirmDeleteUser', username))) return;
     const result = await apiCall(`/users/${username}`, { method: 'DELETE' });
-    if(result && result.success) {
-        showAlert('globalAlert', 'success', `User "${username}" deleted.`);
+    if(result && result.success) { // result.message is already translated from backend
+        showAlert('globalAlert', 'success', result.message || _js('User "{0}" deleted.', username));
         await loadUsers();
         await loadDashboardStats();
     }
@@ -1009,28 +1041,28 @@ async function deleteUser(username) {
 
 async function disconnectUser(activeId) {
     const session = currentSessions.find(s => s['.id'] === activeId);
-    if (!confirm(`Are you sure you want to disconnect user "${session.user}"?`)) return;
+    if (!confirm(_js('confirmDisconnectUser', session.user))) return;
     const result = await apiCall(`/disconnect-user/${activeId}`, { method: 'POST' });
-    if (result && result.success) {
-        showAlert('globalAlert', 'success', `User disconnected.`);
+    if (result && result.success) { // result.message is already translated from backend
+        showAlert('globalAlert', 'success', result.message || _js('User disconnected.'));
         await loadActiveSessions();
         await loadDashboardStats();
     }
 }
 
 async function deleteProfile(id, name) {
-    if (!confirm(`Are you sure you want to delete profile "${name}"? This cannot be undone.`)) return;
+    if (!confirm(_js('confirmDeleteProfile', name))) return;
     const result = await apiCall(`/profiles/${id}`, { method: 'DELETE' });
-    if (result && result.success) {
-        showAlert('globalAlert', 'success', `Profile "${name}" deleted.`);
+    if (result && result.success) { // result.message is already translated from backend
+        showAlert('globalAlert', 'success', result.message || _js('Profile "{0}" deleted.', name));
         await loadProfiles();
     }
 }
 
 async function deleteExpiredUsers() {
-    if (!confirm(`Are you sure you want to find and delete ALL expired users? This action is permanent.`)) return;
+    if (!confirm(_js('confirmDeleteExpiredUsers'))) return;
     const result = await apiCall('/delete-expired-users', { method: 'POST' });
-    if(result && result.success) {
+    if(result && result.success) { // result.message is already translated from backend
         showAlert('globalAlert', 'success', result.message);
         await loadUsers();
         await loadDashboardStats();
@@ -1047,11 +1079,12 @@ function triggerExport(format) {
 }
 
 async function testConnection() {
-    const button = event.target;
-    button.innerHTML = '<span class="loading-spinner"></span> Testing...';
+    const button = event.target.tagName === 'BUTTON' ? event.target : event.target.closest('button');
+    const originalButtonHTML = button.innerHTML;
+    button.innerHTML = `<span class="loading-spinner"></span> ${_js('Testing...')}`;
     button.disabled = true;
-    await checkConnection();
-    button.innerHTML = '<i class="fas fa-plug"></i> Test';
+    await checkConnection(); // This will update connectionStatus itself
+    button.innerHTML = originalButtonHTML; // Restore original button text (which is already translated statically)
     button.disabled = false;
 }
 
@@ -1061,9 +1094,15 @@ function openUserModal(username) {
     if (!user) return;
     
     document.getElementById('editUsernameOrig').value = user.name;
-    document.getElementById('editUsernameDisplay').textContent = user.name;
+    document.getElementById('editUsernameDisplay').textContent = user.name; // This will be part of the modal title, already translated
     document.getElementById('editPassword').value = '';
-    document.getElementById('editProfile').value = user.profile;
+    // Ensure profile dropdown is populated before trying to set its value
+    // This assumes loadProfiles has run and populated currentProfiles
+    const editProfileSelect = document.getElementById('editProfile');
+    if (editProfileSelect.options.length === 0 && currentProfiles.length > 0) { // Repopulate if empty but profiles exist
+        currentProfiles.forEach(p => editProfileSelect.add(new Option(p.name, p.name)));
+    }
+    editProfileSelect.value = user.profile;
     document.getElementById('editTimeLimit').value = user['limit-uptime'] || '';
     document.getElementById('editDataLimit').value = user['limit-bytes-total'] ? parseInt(user['limit-bytes-total']) / 1024 / 1024 : '';
     document.getElementById('editComment').value = user.comment || '';
@@ -1080,7 +1119,7 @@ function openProfileModal(profileId = null) {
     if (profileId) {
         const profile = currentProfiles.find(p => p['.id'] === profileId);
         if (profile) {
-            document.getElementById('profileModalTitle').textContent = `Edit Profile: ${profile.name}`;
+            document.getElementById('profileModalTitle').textContent = _js('Edit Profile: {0}', profile.name);
             document.getElementById('profileId').value = profile['.id'];
             document.getElementById('profileName').value = profile.name;
             document.getElementById('profileRateLimit').value = profile['rate-limit'] || '';
@@ -1088,7 +1127,7 @@ function openProfileModal(profileId = null) {
             document.getElementById('profileSharedUsers').value = profile['shared-users'] || '';
         }
     } else {
-        document.getElementById('profileModalTitle').textContent = 'Add New Profile';
+        document.getElementById('profileModalTitle').textContent = _js('Add New Profile');
     }
     document.getElementById('profileModal').style.display = 'block';
 }
@@ -1119,13 +1158,13 @@ function showGlobalSpinner(show) {
 
     clearTimeout(spinnerTimeout);
     if (show) {
-        statusEl.innerHTML = '<span class="loading-spinner"></span>';
+        statusEl.innerHTML = `<span class="loading-spinner"></span> ${_js('Connecting...')}`; // Or a generic 'Loading...'
     } else {
         // Delay hiding spinner to prevent flickering on fast calls
         spinnerTimeout = setTimeout(() => {
+            // Only update if it's still showing a spinner (i.e., checkConnection didn't update it)
             if (statusEl.innerHTML.includes('spinner')) {
-                // If it's still a spinner, default to disconnected
-                statusEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i><span> Disconnected</span>`;
+                statusEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i><span> ${_js('Disconnected')}</span>`;
                 statusEl.className = 'disconnected';
             }
         }, 250);
@@ -1134,45 +1173,44 @@ function showGlobalSpinner(show) {
 
 // --- Analytics Tab Specific Functions ---
 async function loadAnalyticsData() {
-    logger.info("Loading analytics data...");
+    logger.info(_js("Loading analytics data..."));
     const totalDataEl = document.getElementById('analyticsTotalData');
     const topUsersTbody = document.querySelector('#analyticsTopUsersTable tbody');
     const profileUsageTbody = document.querySelector('#analyticsProfileUsageTable tbody');
 
     // Show loading state
-    if(totalDataEl) totalDataEl.textContent = 'Total Data Transferred: Loading...';
-    if(topUsersTbody) topUsersTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;"><div class="loading-spinner"></div> Loading...</td></tr>`;
-    if(profileUsageTbody) profileUsageTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;"><div class="loading-spinner"></div> Loading...</td></tr>`;
+    if(totalDataEl) totalDataEl.textContent = _js('Total Data Transferred: Loading...');
+    if(topUsersTbody) topUsersTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;"><div class="loading-spinner"></div> ${_js('Loading analytics data...')}</td></tr>`;
+    if(profileUsageTbody) profileUsageTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;"><div class="loading-spinner"></div> ${_js('Loading analytics data...')}</td></tr>`;
 
-    const data = await apiCall('/analytics/basic_summary'); // Corrected path
+    const data = await apiCall('/analytics/basic_summary');
 
-    if (data && data.all_users_sorted_by_data) { // Check for a key field to ensure data looks valid
-        if(totalDataEl) totalDataEl.textContent = 'Total Data Transferred: ' + formatBytes(data.total_data_all_users);
+    if (data && data.all_users_sorted_by_data) {
+        if(totalDataEl) totalDataEl.textContent = _js('Total Data Transferred: {0}', formatBytes(data.total_data_all_users));
 
         // Populate Top Users Table
         if (topUsersTbody) {
             if (data.all_users_sorted_by_data.length > 0) {
-                topUsersTbody.innerHTML = ''; // Clear loading row
-                data.all_users_sorted_by_data.slice(0, 50).forEach((user, index) => { // Show top 50
+                topUsersTbody.innerHTML = '';
+                data.all_users_sorted_by_data.slice(0, 50).forEach((user, index) => {
                     const row = topUsersTbody.insertRow();
                     row.insertCell().textContent = index + 1;
                     row.insertCell().textContent = user.name || 'N/A';
                     row.insertCell().textContent = user.profile || 'N/A';
-                    row.insertCell().textContent = formatBytes(user.bytes_out); // Assuming bytes_out is upload based on common Mikrotik fields
-                    row.insertCell().textContent = formatBytes(user.bytes_in);  // Assuming bytes_in is download
+                    row.insertCell().textContent = formatBytes(user.bytes_out);
+                    row.insertCell().textContent = formatBytes(user.bytes_in);
                     row.insertCell().textContent = formatBytes(user.total_data);
                     row.insertCell().textContent = user.comment || '';
                 });
             } else {
-                topUsersTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No user data usage available.</td></tr>`;
+                topUsersTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">${_js('No user data usage available.')}</td></tr>`;
             }
         }
 
         // Populate Profile Usage Table
         if (profileUsageTbody) {
             if (data.data_usage_by_profile && Object.keys(data.data_usage_by_profile).length > 0) {
-                profileUsageTbody.innerHTML = ''; // Clear loading row
-                // Sort profiles by usage for consistent display
+                profileUsageTbody.innerHTML = '';
                 const sortedProfiles = Object.entries(data.data_usage_by_profile)
                     .sort(([, usageA], [, usageB]) => usageB - usageA);
 
@@ -1182,26 +1220,26 @@ async function loadAnalyticsData() {
                     row.insertCell().textContent = formatBytes(totalUsage);
                 }
             } else {
-                profileUsageTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;">No profile usage data available.</td></tr>`;
+                profileUsageTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;">${_js('No profile usage data available.')}</td></tr>`;
             }
         }
     } else {
-        // apiCall usually shows a global alert on error. This is for table specific messages.
-        logger.error("Failed to load or parse analytics data.");
-        if(totalDataEl) totalDataEl.textContent = 'Total Data Transferred: Error loading data';
-        if(topUsersTbody) topUsersTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">Could not load top user data.</td></tr>`;
-        if(profileUsageTbody) profileUsageTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;">Could not load profile usage data.</td></tr>`;
+        logger.error(_js("Failed to load or parse analytics data."));
+        if(totalDataEl) totalDataEl.textContent = _js('Total Data Transferred: Error loading data');
+        if(topUsersTbody) topUsersTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">${_js('Could not load top user data.')}</td></tr>`;
+        if(profileUsageTbody) profileUsageTbody.innerHTML = `<tr><td colspan="2" style="text-align:center;">${_js('Could not load profile usage data.')}</td></tr>`;
     }
 }
 
 
 function formatBytes(bytes) {
-    if (bytes === null || bytes === undefined || bytes === '' || isNaN(bytes)) return 'Unlimited';
+    if (bytes === null || bytes === undefined || bytes === '' || isNaN(bytes)) return _js('Unlimited');
     const numBytes = Number(bytes);
-    if (numBytes === 0) return '0 B';
+    if (numBytes === 0) return '0 B'; // '0 B' is universal, might not need translation or _js('0 B')
     const k = 1024;
-    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+    const sizes = ['B', 'KB', 'MB', 'GB', 'TB']; // These units are standard, likely no translation needed.
     const i = Math.floor(Math.log(numBytes) / Math.log(k));
+    // Format the number according to locale if needed, but here we keep it simple.
     return `${parseFloat((numBytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
 }
 </script>
