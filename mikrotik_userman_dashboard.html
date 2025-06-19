@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ _('Hotspot Manager v2') }}</title>
+    <title>Hotspot Manager v2</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -140,28 +140,28 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-header">
-            <h2>{{ _('Hotspot Manager') }}</h2>
+            <h2>Hotspot Manager</h2>
         </div>
         <ul class="sidebar-nav">
-            <li><a href="#" class="nav-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i><span>{{ _('Dashboard') }}</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="users"><i class="fas fa-users"></i><span>{{ _('Users') }}</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="create"><i class="fas fa-user-plus"></i><span>{{ _('Create') }}</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="sessions"><i class="fas fa-wifi"></i><span>{{ _('Active Sessions') }}</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="analytics"><i class="fas fa-chart-line"></i><span>{{ _('Analytics') }}</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="maintenance"><i class="fas fa-tools"></i><span>{{ _('Maintenance') }}</span></a></li>
-            <li><a href="#" class="nav-link" data-tab="settings"><i class="fas fa-cog"></i><span>{{ _('Settings') }}</span></a></li>
-            <li><a href="#" id="logoutButton" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>{{ _('Logout') }}</span></a></li>
+            <li><a href="#" class="nav-link active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="users"><i class="fas fa-users"></i><span>Users</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="create"><i class="fas fa-user-plus"></i><span>Create</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="sessions"><i class="fas fa-wifi"></i><span>Active Sessions</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="analytics"><i class="fas fa-chart-line"></i><span>Analytics</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="maintenance"><i class="fas fa-tools"></i><span>Maintenance</span></a></li>
+            <li><a href="#" class="nav-link" data-tab="settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+            <li><a href="#" id="logoutButton" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
         </ul>
         <div class="sidebar-footer" style="text-align: center; padding: 15px 10px; font-size: 0.85em; color: #495057; border-top: 1px solid #dee2e6; margin-top: auto;">
-            <p style="margin-bottom: 5px;"><strong>{{ _('The IT Dad') }}</strong></p>
-            <p style="margin-bottom: 3px; font-size: 0.95em;">{{ _('+(211) 923 616 820') }}</p>
-            <p style="font-size: 0.95em;"><a href="mailto:justinkulang@gmail.com" style="color: var(--primary-color); text-decoration: none;">{{ _('justinkulang@gmail.com') }}</a></p>
+            <p style="margin-bottom: 5px;"><strong>The IT Dad</strong></p>
+            <p style="margin-bottom: 3px; font-size: 0.95em;">+(211) 923 616 820</p>
+            <p style="font-size: 0.95em;"><a href="mailto:justinkulang@gmail.com" style="color: var(--primary-color); text-decoration: none;">justinkulang@gmail.com</a></p>
         </div>
     </aside>
     <main class="main-content">
         <div class="page-header">
-            <h1 id="pageTitle">{{ _('Dashboard') }}</h1>
-            <div id="connectionStatus" class="disconnected"><i class="fas fa-exclamation-triangle"></i><span>{{ _('Connecting...') }}</span></div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div id="connectionStatus" class="disconnected"><i class="fas fa-exclamation-triangle"></i><span>Connecting...</span></div>
         </div>
         <div id="globalAlert" class="alert"></div>
 
@@ -171,136 +171,136 @@
                     <i class="fas fa-users stat-card-icon"></i>
                     <div class="stat-card-info">
                         <h3 id="totalUsers">-</h3>
-                        <p>{{ _('Total Users') }}</p>
+                        <p>Total Users</p>
                     </div>
                 </div>
                 <div class="stat-card">
                     <i class="fas fa-wifi stat-card-icon" style="color: var(--success-color);"></i>
                     <div class="stat-card-info">
                         <h3 id="activeSessions">-</h3>
-                        <p>{{ _('Active Sessions') }}</p>
+                        <p>Active Sessions</p>
                     </div>
                 </div>
             </div>
             <div class="panel">
-                <p>{{ _('Welcome to Hotspot Manager v2. Use the menu on the left to navigate.') }}</p>
+                <p>Welcome to Hotspot Manager v2. Use the menu on the left to navigate.</p>
             </div>
         </div>
 
         <div id="users" class="tab-content">
             <div class="panel">
                 <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3>{{ _('User List') }}</h3>
-                    <button class="btn btn-primary btn-sm" onclick="loadUsers()"><i class="fas fa-sync-alt"></i> {{ _('Refresh') }}</button>
+                    <h3>User List</h3>
+                    <button class="btn btn-primary btn-sm" onclick="loadUsers()"><i class="fas fa-sync-alt"></i> Refresh</button>
                 </div>
                 <div class="form-grid" style="margin-bottom: 1.5rem;">
-                    <div class="form-group"><input type="text" id="userSearchInput" placeholder="{{ _('Search Username/Comment...') }}"></div>
+                    <div class="form-group"><input type="text" id="userSearchInput" placeholder="Search Username/Comment..."></div>
                     <div class="form-group">
                         <select id="userFilterProfile">
-                            <option value="">{{ _('Filter by Profile...') }}</option>
+                            <option value="">Filter by Profile...</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <select id="userFilterStatus">
-                            <option value="">{{ _('Filter by Status...') }}</option>
-                            <option value="active">{{ _('Active') }}</option>
-                            <option value="disabled">{{ _('Disabled') }}</option>
+                            <option value="">Filter by Status...</option>
+                            <option value="active">Active</option>
+                            <option value="disabled">Disabled</option>
                         </select>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <button class="btn btn-danger" id="deleteSelectedUsersButton" style="display:none;"><i class="fas fa-trash-alt"></i> <span data-translate="_js">Delete Selected Users</span></button>
+                    <button class="btn btn-danger" id="deleteSelectedUsersButton" style="display:none;"><i class="fas fa-trash-alt"></i> <span>Delete Selected Users</span></button>
                 </div>
                 <div class="table-container">
                     <table id="usersTable">
                         <thead>
                             <tr>
                                 <th><input type="checkbox" id="selectAllUsersCheckbox" title="Select all users"></th>
-                                <th>{{ _('Username') }}</th><th>{{ _('Profile') }}</th><th>{{ _('Status') }}</th><th>{{ _('Time Limit') }}</th>
-                                <th>{{ _('Data Limit') }}</th><th>{{ _('Uptime') }}</th><th>{{ _('Data Used') }}</th><th>{{ _('Comment') }}</th><th>{{ _('Actions') }}</th>
+                                <th>Username</th><th>Profile</th><th>Status</th><th>Time Limit</th>
+                                <th>Data Limit</th><th>Uptime</th><th>Data Used</th><th>Comment</th><th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="9" style="text-align: center;">{{ _('Loading users...') }}</td></tr>
+                            <tr><td colspan="9" style="text-align: center;">Loading users...</td></tr>
                         </tbody>
                     </table>
                 </div>
                  <div class="panel-header" style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center;">
-                    <h3>{{ _('Export Users') }}</h3>
+                    <h3>Export Users</h3>
                 </div>
                  <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
                     <div class="form-group" style="flex-grow: 1;">
-                         <label for="exportProfileFilter">{{ _('Filter by Profile') }}</label>
+                         <label for="exportProfileFilter">Filter by Profile</label>
                         <select id="exportProfileFilter"></select>
                     </div>
-                    <button class="btn btn-success" onclick="triggerExport('csv')"><i class="fas fa-file-csv"></i> {{ _('CSV') }}</button>
-                    <button class="btn btn-primary" onclick="triggerExport('html_voucher')"><i class="fas fa-ticket-alt"></i> {{ _('Vouchers (HTML)') }}</button>
-                    <button class="btn btn-danger" onclick="triggerExport('pdf_voucher')"><i class="fas fa-file-pdf"></i> {{ _('Vouchers (PDF)') }}</button>
+                    <button class="btn btn-success" onclick="triggerExport('csv')"><i class="fas fa-file-csv"></i> CSV</button>
+                    <button class="btn btn-primary" onclick="triggerExport('html_voucher')"><i class="fas fa-ticket-alt"></i> Vouchers (HTML)</button>
+                    <button class="btn btn-danger" onclick="triggerExport('pdf_voucher')"><i class="fas fa-file-pdf"></i> Vouchers (PDF)</button>
                 </div>
             </div>
         </div>
 
         <div id="create" class="tab-content">
             <div class="panel">
-                <h3 class="panel-header">{{ _('Create Single User') }}</h3>
+                <h3 class="panel-header">Create Single User</h3>
                 <form id="createUserForm">
                     <div class="form-grid">
-                        <div class="form-group"><label for="username">{{ _('Username') }}</label><input type="text" id="username" required></div>
-                        <div class="form-group"><label for="password">{{ _('Password') }}</label><input type="text" id="password" required></div>
-                        <div class="form-group"><label for="profile">{{ _('Profile') }}</label><select id="profile"></select></div>
-                        <div class="form-group"><label for="timeLimit">{{ _('Time Limit') }}</label><input type="text" id="timeLimit" placeholder="{{ _('e.g., 1h30m, 30d') }}"></div>
-                        <div class="form-group"><label for="dataLimit">{{ _('Data Limit (MB)') }}</label><input type="number" id="dataLimit" placeholder="{{ _('e.g., 500') }}"></div>
-                        <div class="form-group"><label for="comment">{{ _('Comment') }}</label><input type="text" id="comment"></div>
+                        <div class="form-group"><label for="username">Username</label><input type="text" id="username" required></div>
+                        <div class="form-group"><label for="password">Password</label><input type="text" id="password" required></div>
+                        <div class="form-group"><label for="profile">Profile</label><select id="profile"></select></div>
+                        <div class="form-group"><label for="timeLimit">Time Limit</label><input type="text" id="timeLimit" placeholder="e.g., 1h30m, 30d"></div>
+                        <div class="form-group"><label for="dataLimit">Data Limit (MB)</label><input type="number" id="dataLimit" placeholder="e.g., 500"></div>
+                        <div class="form-group"><label for="comment">Comment</label><input type="text" id="comment"></div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> {{ _('Create User') }}</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Create User</button>
                 </form>
             </div>
             <div class="panel">
-                <h3 class="panel-header">{{ _('Batch Voucher Generation') }}</h3>
+                <h3 class="panel-header">Batch Voucher Generation</h3>
                 <form id="bulkCreateUserForm">
                      <div class="form-grid">
-                        <div class="form-group"><label for="bulkNumberOfUsers">{{ _('Number of Vouchers') }}</label><input type="number" id="bulkNumberOfUsers" required></div>
-                        <div class="form-group"><label for="bulkProfile">{{ _('Profile') }}</label><select id="bulkProfile" required></select></div>
-                        <div class="form-group"><label for="bulkTimeLimit">{{ _('Time Limit') }}</label><input type="text" id="bulkTimeLimit" placeholder="{{ _('e.g., 2h, 30d') }}"></div>
-                        <div class="form-group"><label for="bulkDataLimit">{{ _('Total Data Limit (MB)') }}</label><input type="number" id="bulkDataLimit" placeholder="{{ _('e.g., 1024') }}"></div>
-                        <div class="form-group"><label for="bulkCommentPrefix">{{ _('Batch Name / Comment Prefix') }}</label><input type="text" id="bulkCommentPrefix" placeholder="{{ _('e.g., Event2024') }}"></div>
-                        <div class="form-group"><label for="bulkUsernamePrefix">{{ _('Username Prefix (Optional)') }}</label><input type="text" id="bulkUsernamePrefix" placeholder="{{ _('e.g., v-') }}"></div>
-                        <div class="form-group"><label for="bulkUsernameLength">{{ _('Username Length (after prefix)') }}</label><input type="number" id="bulkUsernameLength" value="6"></div>
-                        <div class="form-group"><label for="bulkPasswordLength">{{ _('Password Length') }}</label><input type="number" id="bulkPasswordLength" value="6"></div>
+                        <div class="form-group"><label for="bulkNumberOfUsers">Number of Vouchers</label><input type="number" id="bulkNumberOfUsers" required></div>
+                        <div class="form-group"><label for="bulkProfile">Profile</label><select id="bulkProfile" required></select></div>
+                        <div class="form-group"><label for="bulkTimeLimit">Time Limit</label><input type="text" id="bulkTimeLimit" placeholder="e.g., 2h, 30d"></div>
+                        <div class="form-group"><label for="bulkDataLimit">Total Data Limit (MB)</label><input type="number" id="bulkDataLimit" placeholder="e.g., 1024"></div>
+                        <div class="form-group"><label for="bulkCommentPrefix">Batch Name / Comment Prefix</label><input type="text" id="bulkCommentPrefix" placeholder="e.g., Event2024"></div>
+                        <div class="form-group"><label for="bulkUsernamePrefix">Username Prefix (Optional)</label><input type="text" id="bulkUsernamePrefix" placeholder="e.g., v-"></div>
+                        <div class="form-group"><label for="bulkUsernameLength">Username Length (after prefix)</label><input type="number" id="bulkUsernameLength" value="6"></div>
+                        <div class="form-group"><label for="bulkPasswordLength">Password Length</label><input type="number" id="bulkPasswordLength" value="6"></div>
                         <div class="form-group">
-                            <label for="bulkUsernameCharset">{{ _('Username Characters') }}</label>
+                            <label for="bulkUsernameCharset">Username Characters</label>
                             <select id="bulkUsernameCharset">
-                                <option value="alphanumeric" selected>{{ _('Alphanumeric (Upper & Lower)') }}</option>
-                                <option value="alphanumeric_upper">{{ _('Alphanumeric (Upper Case Only)') }}</option>
-                                <option value="alphanumeric_lower">{{ _('Alphanumeric (Lower Case Only)') }}</option>
-                                <option value="numeric">{{ _('Numeric Only') }}</option>
-                                <option value="alpha_upper">{{ _('Alphabetical (Upper Case Only)') }}</option>
-                                <option value="alpha_lower">{{ _('Alphabetical (Lower Case Only)') }}</option>
+                                <option value="alphanumeric" selected>Alphanumeric (Upper & Lower)</option>
+                                <option value="alphanumeric_upper">Alphanumeric (Upper Case Only)</option>
+                                <option value="alphanumeric_lower">Alphanumeric (Lower Case Only)</option>
+                                <option value="numeric">Numeric Only</option>
+                                <option value="alpha_upper">Alphabetical (Upper Case Only)</option>
+                                <option value="alpha_lower">Alphabetical (Lower Case Only)</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="bulkPasswordCharset">{{ _('Password Characters') }}</label>
+                            <label for="bulkPasswordCharset">Password Characters</label>
                             <select id="bulkPasswordCharset">
-                                <option value="alphanumeric_symbols" selected>{{ _('Alphanumeric + Symbols') }}</option>
-                                <option value="alphanumeric">{{ _('Alphanumeric (Upper & Lower)') }}</option>
-                                <option value="alphanumeric_upper">{{ _('Alphanumeric (Upper Case Only)') }}</option>
-                                <option value="alphanumeric_lower">{{ _('Alphanumeric (Lower Case Only)') }}</option>
-                                <option value="numeric">{{ _('Numeric Only') }}</option>
-                                <option value="alpha_upper">{{ _('Alphabetical (Upper Case Only)') }}</option>
-                                <option value="alpha_lower">{{ _('Alphabetical (Lower Case Only)') }}</option>
+                                <option value="alphanumeric_symbols" selected>Alphanumeric + Symbols</option>
+                                <option value="alphanumeric">Alphanumeric (Upper & Lower)</option>
+                                <option value="alphanumeric_upper">Alphanumeric (Upper Case Only)</option>
+                                <option value="alphanumeric_lower">Alphanumeric (Lower Case Only)</option>
+                                <option value="numeric">Numeric Only</option>
+                                <option value="alpha_upper">Alphabetical (Upper Case Only)</option>
+                                <option value="alpha_lower">Alphabetical (Lower Case Only)</option>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-users-cog"></i> {{ _('Generate Vouchers') }}</button>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-users-cog"></i> Generate Vouchers</button>
                 </form>
                 <div id="bulkCreateResultDisplay" style="display:none; margin-top: 1.5rem;">
-                    <h4>{{ _('Generated Credentials:') }}</h4>
+                    <h4>Generated Credentials:</h4>
                     <textarea id="bulkCreateCredentials" rows="8" class="form-group" style="width:100%; font-family: monospace;" readonly></textarea>
                     <button id="exportVouchersHTMLButton" class="btn btn-info" style="margin-top: 10px; display: none;">
-                        <i class="fas fa-eye"></i> {{ _('View Vouchers (HTML)') }}
+                        <i class="fas fa-eye"></i> View Vouchers (HTML)
                     </button>
                     <button id="exportVouchersPDFButton" class="btn btn-danger" style="margin-top: 10px; margin-left: 10px; display: none;">
-                        <i class="fas fa-file-pdf"></i> {{ _('Download Vouchers (PDF)') }}
+                        <i class="fas fa-file-pdf"></i> Download Vouchers (PDF)
                     </button>
                 </div>
             </div>
@@ -309,19 +309,19 @@
         <div id="sessions" class="tab-content">
              <div class="panel">
                 <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3>{{ _('Active Sessions') }}</h3>
-                    <button class="btn btn-primary btn-sm" onclick="loadActiveSessions()"><i class="fas fa-sync-alt"></i> {{ _('Refresh') }}</button>
+                    <h3>Active Sessions</h3>
+                    <button class="btn btn-primary btn-sm" onclick="loadActiveSessions()"><i class="fas fa-sync-alt"></i> Refresh</button>
                 </div>
                 <div class="table-container">
                     <table id="sessionsTable">
                         <thead>
                             <tr>
-                                <th>{{ _('Username') }}</th><th>{{ _('IP Address') }}</th><th>{{ _('MAC Address') }}</th><th>{{ _('Uptime') }}</th>
-                                <th>{{ _('Data Usage') }}</th><th>{{ _('Time Left') }}</th><th>{{ _('Actions') }}</th>
+                                <th>Username</th><th>IP Address</th><th>MAC Address</th><th>Uptime</th>
+                                <th>Data Usage</th><th>Time Left</th><th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="7" style="text-align: center;">{{ _('Loading sessions...') }}</td></tr>
+                            <tr><td colspan="7" style="text-align: center;">Loading sessions...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -330,44 +330,44 @@
 
         <div id="analytics" class="tab-content">
             <div style="margin-bottom: 1rem; text-align: right;">
-                <button id="refreshAnalyticsButton" class="btn btn-primary"><i class="fas fa-sync-alt"></i> {{ _('Refresh Analytics') }}</button>
+                <button id="refreshAnalyticsButton" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Refresh Analytics</button>
             </div>
             <div class="panel">
-                <h3 id="analyticsTotalData" style="font-size: 1.5em; color: var(--primary-color); text-align: center;">{{ _('Total Data Transferred:') }} -</h3>
+                <h3 id="analyticsTotalData" style="font-size: 1.5em; color: var(--primary-color); text-align: center;">Total Data Transferred: -</h3>
             </div>
             <div class="panel">
-                <h3 class="panel-header">{{ _('Top Users by Data Usage') }}</h3>
+                <h3 class="panel-header">Top Users by Data Usage</h3>
                 <div class="table-container">
                     <table id="analyticsTopUsersTable">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ _('Username') }}</th>
-                                <th>{{ _('Profile') }}</th>
-                                <th>{{ _('Upload') }}</th>
-                                <th>{{ _('Download') }}</th>
-                                <th>{{ _('Total Data') }}</th>
-                                <th>{{ _('Comment') }}</th>
+                                <th>Username</th>
+                                <th>Profile</th>
+                                <th>Upload</th>
+                                <th>Download</th>
+                                <th>Total Data</th>
+                                <th>Comment</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="7" style="text-align:center;">{{ _('Loading analytics data...') }}</td></tr>
+                            <tr><td colspan="7" style="text-align:center;">Loading analytics data...</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="panel">
-                <h3 class="panel-header">{{ _('Data Usage by Profile') }}</h3>
+                <h3 class="panel-header">Data Usage by Profile</h3>
                 <div class="table-container">
                     <table id="analyticsProfileUsageTable">
                         <thead>
                             <tr>
-                                <th>{{ _('Profile') }}</th>
-                                <th>{{ _('Total Data Used') }}</th>
+                                <th>Profile</th>
+                                <th>Total Data Used</th>
                                 </tr>
                         </thead>
                         <tbody>
-                            <tr><td colspan="2" style="text-align:center;">{{ _('Loading analytics data...') }}</td></tr>
+                            <tr><td colspan="2" style="text-align:center;">Loading analytics data...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -376,63 +376,63 @@
         
         <div id="maintenance" class="tab-content">
             <div class="panel">
-                <h3 class="panel-header">{{ _('User Profiles') }}</h3>
-                <button class="btn btn-success" style="margin-bottom: 1rem;" onclick="openProfileModal()"><i class="fas fa-plus"></i> {{ _('Add Profile') }}</button>
+                <h3 class="panel-header">User Profiles</h3>
+                <button class="btn btn-success" style="margin-bottom: 1rem;" onclick="openProfileModal()"><i class="fas fa-plus"></i> Add Profile</button>
                 <div class="table-container">
                     <table id="profilesTable">
-                        <thead><tr><th>{{ _('Name') }}</th><th>{{ _('Rate Limit') }}</th><th>{{ _('Session Timeout') }}</th><th>{{ _('Shared Users') }}</th><th>{{ _('Actions') }}</th></tr></thead>
-                        <tbody><tr><td colspan="5" style="text-align: center;">{{ _('Loading profiles...') }}</td></tr></tbody>
+                        <thead><tr><th>Name</th><th>Rate Limit</th><th>Session Timeout</th><th>Shared Users</th><th>Actions</th></tr></thead>
+                        <tbody><tr><td colspan="5" style="text-align: center;">Loading profiles...</td></tr></tbody>
                     </table>
                 </div>
             </div>
             <div class="panel">
-                <h3 class="panel-header">{{ _('Cleanup') }}</h3>
-                <p>{{ _('Automatically find and delete users who have used up their time or data allowance.') }}</p>
-                <button class="btn btn-danger" onclick="deleteExpiredUsers()"><i class="fas fa-trash-alt"></i> {{ _('Delete Expired Users') }}</button>
+                <h3 class="panel-header">Cleanup</h3>
+                <p>Automatically find and delete users who have used up their time or data allowance.</p>
+                <button class="btn btn-danger" onclick="deleteExpiredUsers()"><i class="fas fa-trash-alt"></i> Delete Expired Users</button>
             </div>
             <div class="panel"> <!-- New Panel for Advanced Deletion -->
-                <h3 class="panel-header" data-translate="_js">Advanced User Deletion</h3>
+                <h3 class="panel-header">Advanced User Deletion</h3>
 
                 <!-- Delete All Users -->
                 <div class="form-group" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
-                    <label style="font-weight: bold;" data-translate="_js">Delete All Users</label>
-                    <p><small data-translate="_js">Permanently remove ALL hotspot users from the router. This action cannot be undone.</small></p>
-                    <button class="btn btn-danger" id="deleteAllUsersButton"><i class="fas fa-skull-crossbones"></i> <span data-translate="_js">Delete All Users</span></button>
+                    <label style="font-weight: bold;">Delete All Users</label>
+                    <p><small>Permanently remove ALL hotspot users from the router. This action cannot be undone.</small></p>
+                    <button class="btn btn-danger" id="deleteAllUsersButton"><i class="fas fa-skull-crossbones"></i> <span>Delete All Users</span></button>
                 </div>
                 <hr style="display:none;"> <!-- HR is inside div, hide default hr if any -->
 
                 <!-- Delete by Profile -->
                 <div class="form-group" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
-                    <label style="font-weight: bold;" data-translate="_js">Delete Users by Profile</label>
-                    <p><small data-translate="_js">Select a profile to delete all users associated with it.</small></p>
+                    <label style="font-weight: bold;">Delete Users by Profile</label>
+                    <p><small>Select a profile to delete all users associated with it.</small></p>
                     <select id="deleteByProfileSelect" class="form-group" style="margin-bottom:10px; width:auto; min-width:200px;"></select> <!-- Options populated by JS -->
-                    <button class="btn btn-danger" id="deleteByProfileButton" style="margin-top: 10px;"><i class="fas fa-user-times"></i> <span data-translate="_js">Delete Users from Profile</span></button>
+                    <button class="btn btn-danger" id="deleteByProfileButton" style="margin-top: 10px;"><i class="fas fa-user-times"></i> <span>Delete Users from Profile</span></button>
                 </div>
                 <hr style="display:none;">
 
                 <!-- Delete Users with Zero Uptime -->
                 <div class="form-group">
-                    <label style="font-weight: bold;" data-translate="_js">Delete Users with Zero Uptime</label>
-                    <p><small data-translate="_js">Delete users who have never used the service (uptime is 0s).</small></p>
-                    <button class="btn btn-warning" id="deleteZeroUptimeButton"><i class="fas fa-user-clock"></i> <span data-translate="_js">Delete Zero Uptime Users</span></button>
+                    <label style="font-weight: bold;">Delete Users with Zero Uptime</label>
+                    <p><small>Delete users who have never used the service (uptime is 0s).</small></p>
+                    <button class="btn btn-warning" id="deleteZeroUptimeButton"><i class="fas fa-user-clock"></i> <span>Delete Zero Uptime Users</span></button>
                 </div>
             </div>
         </div>
 
         <div id="settings" class="tab-content">
             <div class="panel">
-                <h3 class="panel-header">{{ _('Router Connection') }}</h3>
+                <h3 class="panel-header">Router Connection</h3>
                  <form id="configForm">
                     <div class="form-grid">
-                        <div class="form-group"><label>{{ _('Router IP Address') }}</label><input type="text" id="routerHost"></div>
-                        <div class="form-group"><label>{{ _('API Port') }}</label><input type="number" id="routerPort"></div>
-                        <div class="form-group"><label>{{ _('Username') }}</label><input type="text" id="routerUsername"></div>
-                        <div class="form-group"><label>{{ _('Password') }}</label><input type="password" id="routerPassword" placeholder="{{ _('Enter new password to update') }}"></div>
-                        <div class="form-group"><label>{{ _('Hotspot Login URL (for QR Codes)') }}</label><input type="text" id="hotspotLoginUrl" placeholder="{{ _('e.g. http://my.hotspot/login') }}"></div>
+                        <div class="form-group"><label>Router IP Address</label><input type="text" id="routerHost"></div>
+                        <div class="form-group"><label>API Port</label><input type="number" id="routerPort"></div>
+                        <div class="form-group"><label>Username</label><input type="text" id="routerUsername"></div>
+                        <div class="form-group"><label>Password</label><input type="password" id="routerPassword" placeholder="Enter new password to update"></div>
+                        <div class="form-group"><label>Hotspot Login URL (for QR Codes)</label><input type="text" id="hotspotLoginUrl" placeholder="e.g. http://my.hotspot/login"></div>
                     </div>
                     <div style="display: flex; gap: 1rem;">
-                        <button type="button" class="btn btn-primary" onclick="testConnection()"><i class="fas fa-plug"></i> {{ _('Test') }}</button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> {{ _('Save') }}</button>
+                        <button type="button" class="btn btn-primary" onclick="testConnection()"><i class="fas fa-plug"></i> Test</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
                     </div>
                 </form>
             </div>
@@ -444,23 +444,23 @@
             <div class="modal-content">
                 <form id="editUserForm">
                     <div class="modal-header">
-                        <h5 class="modal-title">{{ _('Edit User:') }} <span id="editUsernameDisplay"></span></h5>
+                        <h5 class="modal-title">Edit User: <span id="editUsernameDisplay"></span></h5>
                         <button type="button" class="close-button" onclick="closeModal('userModal')">&times;</button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="editUsernameOrig">
-                        <div class="form-group"><label>{{ _('New Password') }}</label><input type="text" id="editPassword" placeholder="{{ _('Leave blank to keep current') }}"></div>
-                        <div class="form-group"><label>{{ _('Profile') }}</label><select id="editProfile"></select></div>
-                        <div class="form-group"><label>{{ _('Time Limit') }}</label><input type="text" id="editTimeLimit"></div>
-                        <div class="form-group"><label>{{ _('Data Limit (MB)') }}</label><input type="number" id="editDataLimit"></div>
-                        <div class="form-group"><label>{{ _('Comment') }}</label><input type="text" id="editComment"></div>
+                        <div class="form-group"><label>New Password</label><input type="text" id="editPassword" placeholder="Leave blank to keep current"></div>
+                        <div class="form-group"><label>Profile</label><select id="editProfile"></select></div>
+                        <div class="form-group"><label>Time Limit</label><input type="text" id="editTimeLimit"></div>
+                        <div class="form-group"><label>Data Limit (MB)</label><input type="number" id="editDataLimit"></div>
+                        <div class="form-group"><label>Comment</label><input type="text" id="editComment"></div>
                         <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                            <input type="checkbox" id="editDisabled" style="width: auto;"><label for="editDisabled" style="margin: 0;">{{ _('Disabled') }}</label>
+                            <input type="checkbox" id="editDisabled" style="width: auto;"><label for="editDisabled" style="margin: 0;">Disabled</label>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" onclick="closeModal('userModal')">{{ _('Cancel') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ _('Save Changes') }}</button>
+                        <button type="button" class="btn" onclick="closeModal('userModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -472,19 +472,19 @@
             <div class="modal-content">
                 <form id="profileForm">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="profileModalTitle">{{ _('Add New Profile') }}</h5>
+                        <h5 class="modal-title" id="profileModalTitle">Add New Profile</h5>
                         <button type="button" class="close-button" onclick="closeModal('profileModal')">&times;</button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="profileId">
-                        <div class="form-group"><label for="profileName">{{ _('Name') }}</label><input type="text" id="profileName" required></div>
-                        <div class="form-group"><label for="profileRateLimit">{{ _('Rate Limit (Upload/Download)') }}</label><input type="text" id="profileRateLimit" placeholder="{{ _('e.g., 512k/2M') }}"></div>
-                        <div class="form-group"><label for="profileSessionTimeout">{{ _('Session Timeout') }}</label><input type="text" id="profileSessionTimeout" placeholder="{{ _('e.g., 1d 00:00:00') }}"></div>
-                        <div class="form-group"><label for="profileSharedUsers">{{ _('Shared Users') }}</label><input type="number" id="profileSharedUsers" placeholder="{{ _('e.g., 1') }}"></div>
+                        <div class="form-group"><label for="profileName">Name</label><input type="text" id="profileName" required></div>
+                        <div class="form-group"><label for="profileRateLimit">Rate Limit (Upload/Download)</label><input type="text" id="profileRateLimit" placeholder="e.g., 512k/2M"></div>
+                        <div class="form-group"><label for="profileSessionTimeout">Session Timeout</label><input type="text" id="profileSessionTimeout" placeholder="e.g., 1d 00:00:00"></div>
+                        <div class="form-group"><label for="profileSharedUsers">Shared Users</label><input type="number" id="profileSharedUsers" placeholder="e.g., 1"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" onclick="closeModal('profileModal')">{{ _('Cancel') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ _('Save Profile') }}</button>
+                        <button type="button" class="btn" onclick="closeModal('profileModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Profile</button>
                     </div>
                 </form>
             </div>
@@ -499,21 +499,21 @@ let currentSessions = [];
 let lastGeneratedBatchCredentials = []; // To store the last batch of generated credentials
 let analyticsDataLoaded = false; // Flag for initial analytics load
 
-window.i18n = {}; // Global store for translations
+// window.i18n = {}; // Global store for translations - REMOVED
 
-// Translation function
-function _js(key, ...args) {
-    let translated = window.i18n[key] || key;
-    if (args.length > 0) {
-        args.forEach((arg, index) => {
-            // Simple positional placeholder {0}, {1}, etc.
-            // For named placeholders, you might need a more complex regex or parsing
-            const placeholder = new RegExp(`\\{${index}\\}`, 'g');
-            translated = translated.replace(placeholder, arg);
-        });
-    }
-    return translated;
-}
+// Translation function - REMOVED
+// function _js(key, ...args) {
+//     let translated = window.i18n[key] || key;
+//     if (args.length > 0) {
+//         args.forEach((arg, index) => {
+//             // Simple positional placeholder {0}, {1}, etc.
+//             // For named placeholders, you might need a more complex regex or parsing
+//             const placeholder = new RegExp(`\\{${index}\\}`, 'g');
+//             translated = translated.replace(placeholder, arg);
+//         });
+//     }
+//     return translated;
+// }
 
 const logger = { // Simple logger
     info: console.log,
@@ -524,22 +524,22 @@ const logger = { // Simple logger
 
 // --- Init & Navigation ---
 document.addEventListener('DOMContentLoaded', async () => {
-    // Fetch translations first
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/translations`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        window.i18n = await response.json();
-    } catch (error) {
-        logger.error('Failed to load translations:', error);
-        // Show a basic, non-translatable error to the user if translations fail to load
-        const statusEl = document.getElementById('connectionStatus');
-        if (statusEl) {
-            statusEl.innerHTML = 'Error loading translations. Please refresh.';
-            statusEl.className = 'disconnected';
-        }
-    }
+    // Fetch translations first - REMOVED
+    // try {
+    //     const response = await fetch(`${API_BASE_URL}/api/translations`);
+    //     if (!response.ok) {
+    //         throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+    //     window.i18n = await response.json();
+    // } catch (error) {
+    //     logger.error('Failed to load translations:', error);
+    //     // Show a basic, non-translatable error to the user if translations fail to load
+    //     const statusEl = document.getElementById('connectionStatus');
+    //     if (statusEl) {
+    //         statusEl.innerHTML = 'Error loading translations. Please refresh.';
+    //         statusEl.className = 'disconnected';
+    //     }
+    // }
 
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', e => {
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (logoutButton) {
         logoutButton.addEventListener('click', async function(event) {
             event.preventDefault();
-            if (confirm(_js('confirmLogout'))) {
+            if (confirm('Are you sure you want to logout?')) {
                 showGlobalSpinner(true); // Show spinner during API call
                 try {
                     const result = await apiCall('/logout', { method: 'POST' });
@@ -593,8 +593,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 } catch (error) {
                     // This catch is for unexpected errors not handled by apiCall's own try/catch
-                    logger.error(_js('Logout failed unexpectedly. Please try again.'), error);
-                    showAlert('globalAlert', 'danger', _js('Logout failed unexpectedly. Please try again.'));
+                    logger.error('Logout failed unexpectedly. Please try again.', error);
+                    showAlert('globalAlert', 'danger', 'Logout failed unexpectedly. Please try again.');
                     showGlobalSpinner(false);
                 }
             }
@@ -605,12 +605,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (exportHTMLButton) {
         exportHTMLButton.addEventListener('click', function() {
             if (!lastGeneratedBatchCredentials || lastGeneratedBatchCredentials.length === 0) {
-                showAlert('globalAlert', 'warning', _js('No generated voucher data available to view.'));
+                showAlert('globalAlert', 'warning', 'No generated voucher data available to view.');
                 return;
             }
             const hotspotLoginUrlValue = document.getElementById('hotspotLoginUrl').value;
             if (!hotspotLoginUrlValue) {
-                 showAlert('globalAlert', 'warning', _js('Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.'));
+                 showAlert('globalAlert', 'warning', 'Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.');
                 // Allow to proceed if user wants to view without QR, backend will handle missing URL for QR.
             }
 
@@ -643,7 +643,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (exportPDFButton && !exportPDFButton.hasAttribute('data-listener-attached')) { // Check if listener already attached
         exportPDFButton.addEventListener('click', function() {
             if (!lastGeneratedBatchCredentials || lastGeneratedBatchCredentials.length === 0) {
-                showAlert('globalAlert', 'warning', _js('No generated voucher data available for PDF export.'));
+                showAlert('globalAlert', 'warning', 'No generated voucher data available for PDF export.');
                 return;
             }
             const hotspotLoginUrlValue = document.getElementById('hotspotLoginUrl').value;
@@ -651,7 +651,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // QRCODE_AVAILABLE is a Python variable, not directly usable in JS unless passed to template.
             // For now, just check if hotspotLoginUrlValue exists for a more generic warning.
             if (!hotspotLoginUrlValue) { 
-                 showAlert('globalAlert', 'info', _js('Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.'));
+                 showAlert('globalAlert', 'info', 'Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.');
             }
 
             const form = document.createElement('form');
@@ -690,11 +690,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const usernamesToDelete = Array.from(checkboxes).map(cb => cb.dataset.username);
 
             if (usernamesToDelete.length === 0) {
-                showAlert('globalAlert', 'warning', _js('Please select at least one user.'));
+                showAlert('globalAlert', 'warning', 'Please select at least one user.');
                 return;
             }
 
-            if (confirm(_js('Are you sure you want to delete the selected {0} user(s)?', usernamesToDelete.length))) {
+            if (confirm(`Are you sure you want to delete the selected ${usernamesToDelete.length} user(s)?`)) {
                 showGlobalSpinner(true);
                 let successCount = 0;
                 let errorCount = 0;
@@ -709,7 +709,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 }
                 showGlobalSpinner(false);
-                showAlert('globalAlert', errorCount > 0 ? 'warning' : 'success', _js('Users deleted: {0}. Errors: {1}.', successCount, errorCount));
+                showAlert('globalAlert', errorCount > 0 ? 'warning' : 'success', `Users deleted: ${successCount}. Errors: ${errorCount}.`);
 
                 loadUsers(); // Refresh user list
                 loadDashboardStats(); // Refresh dashboard stats
@@ -724,18 +724,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const deleteAllUsersBtn = document.getElementById('deleteAllUsersButton');
     if (deleteAllUsersBtn) {
         deleteAllUsersBtn.addEventListener('click', async () => {
-            const confirmInput = prompt(_js('DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:'));
-            if (confirmInput === "DELETE ALL") { // Exact match, not using _js for "DELETE ALL"
+            const confirmInput = prompt('DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:');
+            if (confirmInput === "DELETE ALL") {
                 const result = await apiCall('/users/batch-delete', { method: 'POST', body: JSON.stringify({ method: 'all' }) });
                 if (result) {
-                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Display pre-translated message
+                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message);
                     if (result.success) {
                         loadUsers();
                         loadDashboardStats();
                     }
                 }
             } else {
-                showAlert('globalAlert', 'info', _js('Deletion cancelled or invalid confirmation input.'));
+                showAlert('globalAlert', 'info', 'Deletion cancelled or invalid confirmation input.');
             }
         });
     }
@@ -745,13 +745,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         deleteByProfileBtn.addEventListener('click', async () => {
             const selectedProfile = document.getElementById('deleteByProfileSelect').value;
             if (!selectedProfile) {
-                showAlert('globalAlert', 'warning', _js('Please select a profile first.'));
+                showAlert('globalAlert', 'warning', 'Please select a profile first.');
                 return;
             }
-            if (confirm(_js('Are you sure you want to delete all users from profile "{0}"?', selectedProfile))) {
+            if (confirm(`Are you sure you want to delete all users from profile "${selectedProfile}"?`)) {
                 const result = await apiCall('/users/batch-delete', { method: 'POST', body: JSON.stringify({ method: 'by_profile', profile: selectedProfile }) });
                 if (result) {
-                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Display pre-translated message
+                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message);
                     if (result.success) {
                         loadUsers();
                         loadDashboardStats();
@@ -764,10 +764,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const deleteZeroUptimeBtn = document.getElementById('deleteZeroUptimeButton');
     if (deleteZeroUptimeBtn) {
         deleteZeroUptimeBtn.addEventListener('click', async () => {
-            if (confirm(_js('Are you sure you want to delete all users with zero uptime (never used)?'))) {
+            if (confirm('Are you sure you want to delete all users with zero uptime (never used)?')) {
                 const result = await apiCall('/users/batch-delete', { method: 'POST', body: JSON.stringify({ method: 'zero_uptime' }) });
                 if (result) {
-                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message); // Display pre-translated message
+                    showAlert('globalAlert', result.success ? 'success' : 'danger', result.message);
                     if (result.success) {
                         loadUsers();
                         loadDashboardStats();

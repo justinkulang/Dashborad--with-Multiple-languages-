@@ -3,4 +3,8 @@ Flask-CORS==4.0.0
 librouteros==3.2.0
 weasyprint
 qrcode[pil]
-Flask-Babel
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.29
+Flask-Migrate==4.0.5
+alembic==1.13.1
+greenlet>=1.1.0

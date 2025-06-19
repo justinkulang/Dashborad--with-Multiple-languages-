@@ -2,7 +2,6 @@
 Major overhaul with a redesigned UI, profile management, filtered exports, QR codes, and more."""
 from flask import Flask, render_template, request, jsonify, send_from_directory, g, redirect, url_for
 from flask_cors import CORS
-from flask_babel import Babel, _
 import librouteros
 from librouteros.exceptions import TrapError
 import socket
@@ -42,8 +41,6 @@ except (ImportError, OSError) as e:
 
 # Attempt to import qrcode for QR generation
 
-babel = Babel() # Define Babel instance here
-
 try:
     import qrcode
     from qrcode.image.styledpil import StyledPilImage
@@ -59,20 +56,6 @@ app = Flask(__name__)
 CORS(app)
 
 # Language configuration
-app.config['LANGUAGES'] = ['en', 'ar', 'fr']
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
-
-babel.init_app(app) # Initialize Babel with app context here
-
-# @babel.localeselector  # Commented out as per subtask instruction
-# def get_locale_func():
-#     # Try to get the language from the user's browser settings
-#     # Ensure request context is available or handle appropriately if called outside request
-#     if request:
-#         return request.accept_languages.best_match(app.config['LANGUAGES'])
-#     return app.config['BABEL_DEFAULT_LOCALE'] # Fallback
-
 def get_base_path():
     """ Get base path for PyInstaller bundled app or normal script """
     if hasattr(sys, '_MEIPASS'):
@@ -222,6 +205,7 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
     Can optionally include a print button.
     """
     # --- Start of HTML content generation ---
+    # TODO: Replace any _() calls within this function if they were added for i18n
     html_parts = ["""
     <!DOCTYPE html>
     <html lang="en">
@@ -326,7 +310,7 @@ def _generate_vouchers_page_html(vouchers: list, hotspot_login_url: str, include
         if qr_code_b64:
             html_parts.append(f'<div class="voucher-qr"><img src="data:image/png;base64,{qr_code_b64}" alt="QR Code for {username}"></div>')
         else:
-            html_parts.append('<div class="voucher-qr" style="font-size:0.8em; color:#aaa;"><span>QR N/A</span></div>')
+            html_parts.append('<div class="voucher-qr" style="font-size:0.8em; color:#aaa;"><span>QR N/A</span></div>') # No _() here, plain string
         html_parts.append("</div>") # Close voucher div
 
     html_parts.append("""
@@ -536,7 +520,7 @@ class RouterOSService:
             if api is None:
                 logger.error("Error getting active sessions: Mikrotik API not available.")
                 return []
-            sessions = list(api.path('ip', 'hotspot', 'active').select(
+            sessions = list(api.path('ip', 'hotspot', 'active').select( # Assuming Mikrotik API returns strings, not translated
                 'user', 'address', 'mac-address', 'uptime', 'bytes-in', 'bytes-out',
                 'session-time-left', 'idle-time', '.id'
             ))
@@ -564,7 +548,7 @@ class RouterOSService:
             if api is None:
                 logger.error("Error getting profiles: Mikrotik API not available.")
                 return []
-            profiles = list(api.path('ip', 'hotspot', 'user', 'profile').select(
+            profiles = list(api.path('ip', 'hotspot', 'user', 'profile').select( # Assuming Mikrotik API returns strings, not translated
                 '.id', 'name', 'rate-limit', 'session-timeout', 'shared-users',
                 'mac-cookie-timeout', 'keepalive-timeout'
             ))
@@ -630,14 +614,14 @@ class RouterOSService:
         try:
             api = get_mikrotik_api()
             if api is None: # Check if API connection failed initially
-                return False, "Mikrotik connection not available", 0
+                return False, _("Mikrotik connection not available"), 0
             
             users = self.get_hotspot_users() 
             # get_hotspot_users itself will return [] if api was None, so this is safe.
             # However, if api was None for this call but not for the initial api check,
             # we might want to re-check. But the current pattern is one api per request.
             if not users and api is None: # If users list is empty because api became None
-                 return False, "Mikrotik connection not available (users fetch failed)", 0
+                 return False, _("Mikrotik connection not available (users fetch failed)"), 0
 
             deleted_count = 0
             errors = []
@@ -667,14 +651,14 @@ class RouterOSService:
                         errors.append(user['name'])
                         logger.error(f"Failed to delete expired user '{user['name']}': {e}")
             
-            message = f"Successfully deleted {deleted_count} expired user(s)."
+            message = _("Successfully deleted %(count)s expired user(s).", count=deleted_count)
             if errors:
-                message += f" Failed to delete: {', '.join(errors)}."
+                message += _(" Failed to delete: %(users)s.", users=', '.join(errors))
             
             return True, message, deleted_count
         except Exception as e:
             logger.error(f"Error during expired user cleanup: {str(e)}")
-            return False, f"An unexpected error occurred: {str(e)}", 0
+            return False, _("An unexpected error occurred: %(error)s", error=str(e)), 0
 
     def get_basic_bandwidth_analytics(self) -> dict:
         """Calculates basic bandwidth analytics from hotspot user data."""
@@ -1105,133 +1089,15 @@ def get_basic_analytics_summary_route():
         
     except Exception as e:
         logger.error(f"API: Error fetching basic analytics: {str(e)}")
-        return jsonify({'success': False, 'message': _('A server error occurred while fetching analytics: %s') % str(e)}), 500
+        return jsonify({'success': False, 'message': 'A server error occurred while fetching analytics: %s' % str(e)}), 500
 
-@app.route('/api/translations')
-def get_translations():
-    # Define all keys that the JavaScript side will need.
-    translations = {
-        # Common alerts & messages
-        'Loading...': _('Loading...'),
-        'Successfully connected! Redirecting...': _('Successfully connected! Redirecting...'),
-        'Connection failed. Please check details and try again.': _('Connection failed. Please check details and try again.'),
-        'Network error or server is unreachable.': _('Network error or server is unreachable.'),
-        'Operation successful': _('Operation successful'),
-        'Operation failed': _('Operation failed'),
-        'Are you sure?': _('Are you sure?'),
-        'Saved': _('Saved'),
-        'Deleted': _('Deleted'),
-        'Updated': _('Updated'),
-        'Created': _('Created'),
-        'Connected': _('Connected'),
-        'Disconnected': _('Disconnected'),
-        'Connection test failed. Router might be unreachable.': _('Connection test failed. Router might be unreachable.'),
-        'Configuration saved! Testing new connection...': _('Configuration saved! Testing new connection...'),
-        'User created successfully!': _('User created successfully!'),
-        'User updated successfully!': _('User updated successfully!'),
-        'Profile updated successfully!': _('Profile updated successfully!'),
-        'Profile created successfully!': _('Profile created successfully!'),
-        'No users match the criteria.': _('No users match the criteria.'),
-        'No active sessions found.': _('No active sessions found.'),
-        'Could not load users.': _('Could not load users.'),
-        'Could not load sessions.': _('Could not load sessions.'),
-        'No profiles found.': _('No profiles found.'),
-        'Loading users...': _('Loading users...'),
-        'Loading sessions...': _('Loading sessions...'),
-        'Loading profiles...': _('Loading profiles...'),
-        'Loading analytics data...': _('Loading analytics data...'),
-        'Total Data Transferred: Loading...': _('Total Data Transferred: Loading...'),
-        'Could not load top user data.': _('Could not load top user data.'),
-        'Could not load profile usage data.': _('Could not load profile usage data.'),
-        'No user data usage available.': _('No user data usage available.'),
-        'No profile usage data available.': _('No profile usage data available.'),
-        'Total Data Transferred: Error loading data': _('Total Data Transferred: Error loading data'),
-        'Connect': _('Connect'),
-        'Connecting...': _('Connecting...'),
-        'Refresh': _('Refresh'),
-        'Test': _('Test'),
-        'Testing...': _('Testing...'),
-        'Save': _('Save'),
-        'Saving...': _('Saving...'),
-        'Delete': _('Delete'),
-        'Deleting...': _('Deleting...'),
-        'Disconnect': _('Disconnect'),
-        'Disconnecting...': _('Disconnecting...'),
-        'Add Profile': _('Add Profile'),
-        'Edit Profile': _('Edit Profile'),
-        'confirmLogout': _('Are you sure you want to logout?'),
-        'confirmDeleteUser': _('Are you sure you want to delete user "{0}"?'),
-        'confirmDisconnectUser': _('Are you sure you want to disconnect user "{0}"?'),
-        'confirmDeleteProfile': _('Are you sure you want to delete profile "{0}"? This cannot be undone.'),
-        'confirmDeleteExpiredUsers': _('Are you sure you want to find and delete ALL expired users? This action is permanent.'),
-        'No generated voucher data available to view.': _('No generated voucher data available to view.'),
-        'Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.': _('Hotspot Login URL is not set in Settings (under the Settings Tab). QR Codes cannot be generated for viewing if this is missing.'),
-        'No generated voucher data available for PDF export.': _('No generated voucher data available for PDF export.'),
-        'Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.': _('Hotspot Login URL is not set in Settings. QR Codes might be omitted in the PDF if this URL is required by the backend for them.'),
-        'Unlimited': _('Unlimited'),
-        'All Profiles': _('All Profiles'),
-        'Select Profile': _('Select Profile'),
-        'Disabled': _('Disabled'),
-        'Active': _('Active'),
-        'Logout failed unexpectedly. Please try again.': _('Logout failed unexpectedly. Please try again.'),
-        'Expected JSON response from server for {0}, but received {1}.': _('Expected JSON response from server for {0}, but received {1}.'),
-        'Total Data Transferred: {0}': _('Total Data Transferred: {0}'),
-        'Edit User: {0}': _('Edit User: {0}'),
-        'Edit Profile: {0}': _('Edit Profile: {0}'),
-        'Add New Profile': _('Add New Profile'),
-        'Profile {0} created successfully!': _('Profile {0} created successfully!'),
-        'Profile {0} updated successfully!': _('Profile {0} updated successfully!'),
-        'User "{0}" deleted.': _('User "{0}" deleted.'),
-        'User disconnected.': _('User disconnected.'),
-        'Profile "{0}" deleted.': _('Profile "{0}" deleted.'),
-        'HTTP error! status: {0}': _('HTTP error! status: {0}'),
-        'Connection failed (Error {0}). Please check details and try again.': _('Connection failed (Error {0}). Please check details and try again.'),
-
-        # Frontend specific strings for batch deletion UI and JS alerts/confirms
-        'Advanced User Deletion': _('Advanced User Deletion'),
-        'Delete All Users': _('Delete All Users'), # Used for label and button
-        'Permanently remove ALL hotspot users from the router. This action cannot be undone.': _('Permanently remove ALL hotspot users from the router. This action cannot be undone.'),
-        'Delete Users by Profile': _('Delete Users by Profile'),
-        'Select a profile to delete all users associated with it.': _('Select a profile to delete all users associated with it.'),
-        'Delete Users from Profile': _('Delete Users from Profile'),
-        'Delete Users with Zero Uptime': _('Delete Users with Zero Uptime'),
-        'Delete users who have never used the service (uptime is 0s).': _('Delete users who have never used the service (uptime is 0s).'),
-        'Delete Zero Uptime Users': _('Delete Zero Uptime Users'),
-        # 'Delete Selected Users' is initial text for a button, content changes, handled by 'Delete Selected ({0})'
-        # 'Select all users' is a static title attribute in HTML, not strictly needed for JS i18n here unless JS constructs it.
-        'Please select at least one user.': _('Please select at least one user.'),
-        'Are you sure you want to delete the selected {0} user(s)?': _('Are you sure you want to delete the selected {0} user(s)?'),
-        'Users deleted: {0}. Errors: {1}.': _('Users deleted: {0}. Errors: {1}.'), # For selected user deletion summary
-        'DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:': _('DANGER! This will delete ALL users and CANNOT be undone. Type DELETE ALL to confirm:'),
-        'Deletion cancelled or invalid confirmation input.': _('Deletion cancelled or invalid confirmation input.'),
-        'Please select a profile first.': _('Please select a profile first.'),
-        'Are you sure you want to delete all users from profile "{0}"?': _('Are you sure you want to delete all users from profile "{0}"?'),
-        'Are you sure you want to delete all users with zero uptime (never used)?': _('Are you sure you want to delete all users with zero uptime (never used)?'),
-        'Select Profile...': _('Select Profile...'), # Default for #deleteByProfileSelect
-        'Delete Selected ({0})': _('Delete Selected ({0})'), # For updating #deleteSelectedUsersButton text
-
-        # Note: Messages from backend batch delete operations (e.g., "All X users deleted successfully.")
-        # are already translated in their respective Python routes before being sent in the JSON response.
-        # The JavaScript should display result.message directly for these, not re-translate them with _js().
-        # The keys below were previously here but are for backend-translated messages, so they are not needed
-        # in the /api/translations dictionary which is for client-side string keys.
-        # 'Profile name is required for this deletion method.': _('Profile name is required for this deletion method.'),
-        # 'Invalid deletion method specified.': _('Invalid deletion method specified.'),
-        # 'Invalid request. Deletion method required.': _('Invalid request. Deletion method required.'),
-        # 'All %(count)s users deleted successfully.': _('All %(count)s users deleted successfully.'), # Python style
-        # 'No users found to delete.': _('No users found to delete.'),
-        # "No users found in profile '%(profile)s'.": _("No users found in profile '%(profile)s'."),
-        # "Successfully deleted %(count)s users from profile '%(profile)s'.": _("Successfully deleted %(count)s users from profile '%(profile)s'."),
-        # "No users found with zero uptime.": _("No users found with zero uptime."),
-        # "Successfully deleted %(count)s users with zero uptime.": _("Successfully deleted %(count)s users with zero uptime."),
-        # "An unspecified error occurred.": _("An unspecified error occurred.") # Generic, might be useful for JS if JS needs to show a generic error itself.
-    }
-    return jsonify(translations)
+# The /api/translations endpoint is no longer needed as Flask-Babel is being removed.
+# All translatable strings will be hardcoded in English in the templates and JS.
 
 if __name__ == '__main__':
     server_config = app_config['server']
     print("="*40)
-    print(_("  Mikrotik Hotspot Management System v2"))
+    print("  Mikrotik Hotspot Management System v2")
     print("="*40)
-    print(f"\n✅ {_('Dashboard available at:')} http://{server_config['host']}:{server_config['port']}")
+    print(f"\n✅ Dashboard available at: http://{server_config['host']}:{server_config['port']}")
     app.run(host=server_config['host'], port=server_config['port'], debug=server_config['debug'])
